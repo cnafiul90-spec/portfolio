@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Nafiul Chowdhury - Portfolio</title>
+
+    <!-- ── SEO & OG Tags ── -->
+    <meta name="description" content="Md. Nafiul Chowdhury — Undergraduate Researcher specialising in Nano-enabled Biosensors and Point-of-Care Diagnostics at CUET.">
+    <meta name="keywords" content="Nafiul Chowdhury, Biosensors, Point-of-Care Diagnostics, CUET, Electrochemical, OECT, Research">
+    <meta name="author" content="Md. Nafiul Chowdhury">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Md. Nafiul Chowdhury — Researcher | Biosensors & PoC Diagnostics">
+    <meta property="og:description" content="Undergraduate Researcher at CUET specialising in nano-enabled biosensors, electrochemical transduction, and point-of-care diagnostics.">
+    <meta property="og:image"       content="https://images.unsplash.com/photo-1507676184212-d0c30a519027?auto=format&fit=crop&q=80&w=1200&h=630">
+    <meta property="og:url"         content="https://cnafiul90-spec.github.io/portfolio_Md_Nafiul_Chowdhury/">
+    <meta property="og:site_name"   content="Md. Nafiul Chowdhury Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Md. Nafiul Chowdhury — Researcher">
+    <meta name="twitter:description" content="Undergraduate Researcher at CUET specialising in nano-enabled biosensors and PoC diagnostics.">
+    <meta name="twitter:image"       content="https://images.unsplash.com/photo-1507676184212-d0c30a519027?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body { 
+          font-family: 'Inter', system-ui, sans-serif; 
+          background-color: #FAFBFE; 
+          background-image: 
+            radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.03) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.03) 0px, transparent 50%);
+          color: #0F172A;
+        }
+
+        h1, h2, h3, h4, h5, h6 { 
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important; 
+          font-weight: 700;
+          letter-spacing: -0.02em;
+        }
+
+        /* ── Modern Scrollbar ── */
+        ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #FAFBFE;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #E2E8F0;
+          border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #CBD5E1;
+        }
+
+        /* ── Glassmorphic card adjustments site-wide ── */
+        .bg-white.shadow-sm.border {
+          background-color: rgba(255, 255, 255, 0.75) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          border-color: rgba(226, 232, 240, 0.7) !important;
+          box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04) !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        .bg-white.shadow-sm.border:hover {
+          background-color: rgba(255, 255, 255, 0.85) !important;
+          box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08) !important;
+          transform: translateY(-3px);
+          border-color: rgba(147, 197, 253, 0.3) !important;
+        }
+
+        /* ── Floating Header Glassmorphism ── */
+        header.fixed {
+          background-color: rgba(255, 255, 255, 0.75) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          border-color: rgba(226, 232, 240, 0.6) !important;
+        }
+
+        /* ── Smooth active state scale transitions for buttons ── */
+        button, a, .btn {
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        button:active, a:active {
+          transform: scale(0.97) !important;
+        }
+
+        /* ── Glowing primary buttons hover effect ── */
+        .bg-\[\#2042A4\] {
+          background-color: #2042A4 !important;
+          box-shadow: 0 4px 12px rgba(32, 66, 164, 0.15);
+        }
+        .bg-\[\#2042A4\]:hover {
+          background-color: #1A3788 !important;
+          box-shadow: 0 12px 24px -6px rgba(32, 66, 164, 0.35) !important;
+          transform: translateY(-2px);
+        }
+
+        /* ── Secondary outline buttons hover effect ── */
+        .border-2.border-\[\#2042A4\]:hover {
+          background-color: rgba(32, 66, 164, 0.05) !important;
+          transform: translateY(-2px);
+        }
+
+        /* ── Tab fade-in animation ── */
+        .page-enter {
+          animation: pageEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        @keyframes pageEnter {
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Slide up (admin cards etc) ── */
+        .slide-up {
+          animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ── Staggered children ── */
+        .stagger > *:nth-child(1) { animation-delay: 0ms; }
+        .stagger > *:nth-child(2) { animation-delay: 60ms; }
+        .stagger > *:nth-child(3) { animation-delay: 120ms; }
+        .stagger > *:nth-child(4) { animation-delay: 180ms; }
+        .stagger > *:nth-child(5) { animation-delay: 240ms; }
+        .stagger > *:nth-child(6) { animation-delay: 300ms; }
+
+        /* ── Skeleton shimmer ── */
+        @keyframes shimmer {
+          0%   { background-position: -400px 0; }
+          100% { background-position: 400px 0; }
+        }
+        .skeleton {
+          background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+          background-size: 800px 100%;
+          animation: shimmer 1.4s infinite;
+          border-radius: 8px;
+        }
+
+        /* ── Back to top button ── */
+        #back-to-top {
+          position: fixed; bottom: 28px; right: 28px; z-index: 999;
+          width: 44px; height: 44px;
+          background: #2042A4; color: white;
+          border-radius: 50%; border: none; cursor: pointer;
+          display: flex; align-items: center; justify-content: center;
+          opacity: 0; pointer-events: none;
+          transition: opacity 0.3s, transform 0.3s, background-color 0.2s, box-shadow 0.2s;
+          box-shadow: 0 8px 20px rgba(32, 66, 164, 0.25);
+        }
+        #back-to-top.visible { opacity: 1; pointer-events: all; }
+        #back-to-top:hover { transform: translateY(-3px); background-color: #1A3788; box-shadow: 0 12px 28px rgba(32, 66, 164, 0.4); }
+
+        /* ── Rotating animations for avatar ── */
+        @keyframes spinSlow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes spinReverse {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        @keyframes pulseSlow {
+          0%, 100% { opacity: 0.7; transform: scale(1); }
+          50% { opacity: 0.9; transform: scale(1.04); }
+        }
+        .animate-spin-slow {
+          animation: spinSlow 25s linear infinite;
+        }
+        .animate-spin-reverse {
+          animation: spinReverse 16s linear infinite;
+        }
+        .animate-pulse-slow {
+          animation: pulseSlow 5s ease-in-out infinite;
+        }
+    </style>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+      import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDLSnqMPPnDH4gfqHKXpmD6nNh7uIUe4Rc",
+        authDomain: "portfolio-6745e.firebaseapp.com",
+        databaseURL: "https://portfolio-6745e-default-rtdb.firebaseio.com",
+        projectId: "portfolio-6745e",
+        storageBucket: "portfolio-6745e.firebasestorage.app",
+        messagingSenderId: "892860423959",
+        appId: "1:892860423959:web:fd8058f272b1c36de6e152",
+        measurementId: "G-2FNNBW2TZP"
+      };
+
+      const app  = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      window.db                     = getDatabase(app);
+      window.firebaseSet            = set;
+      window.firebaseRef            = ref;
+      window.firebaseGet            = get;
+      window.firebaseAuth           = auth;
+      window.firebaseSignIn         = signInWithEmailAndPassword;
+      window.firebaseSendReset      = sendPasswordResetEmail;
+      window.firebaseOnAuthStateChanged = onAuthStateChanged;
+      window.firebaseSignOut        = signOut;
+    </script>
+
+    <script id="portfolio-data" type="application/json">
+    {
+      "profile": {
+        "name": "Md. Nafiul Chowdhury",
+        "title": "Undergraduate Researcher | Nano-enabled\nBiosensors & PoC Diagnostics",
+        "bio": "I am an undergraduate researcher specialising in nano-enabled biosensors and point-of-care diagnostics...",
+        "email": "cnafiul90@gmail.com",
+        "phone": "",
+        "avatar": ""
+      },
+      "cvData": {
+        "title": "Research CV",
+        "description": "Tailored for graduate school applications and professor outreach. Highlights publications, research experience, and skills.",
+        "link": "#"
+      },
+      "researchInterests": [
+        { "id": 1, "icon": "fa-solid fa-flask",       "title": "Point-of-Care (PoC) Diagnostics",      "description": "Developing accessible diagnostic tools for rapid, on-site analysis." },
+        { "id": 2, "icon": "fa-solid fa-tint",        "title": "Electrochemical Biosensors",           "description": "Engineering sensitive and selective platforms for biomarker detection." },
+        { "id": 3, "icon": "fa-solid fa-layer-group", "title": "Organic Electrochemical Transistor",   "description": "Leveraging OECTs as highly sensitive transducers for real-time bioelectronic applications." },
+        { "id": 4, "icon": "fa-solid fa-microchip",   "title": "COMSOL/MATLAB Simulation",            "description": "Utilizing computational modeling for sensor design and optimization." }
+      ],
+      "homeSlider": [
+        { "id": 1, "image": "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=1000", "caption": "2nd Runner-Up - Face the Case 3.0 (Team Tetris)" },
+        { "id": 2, "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000", "caption": "Presenting at International Conference ECCE 2024" }
+      ],
+      "education": [
+        { "id": 1, "degree": "Bachelor of Science in Electrical and Electronic Engineering", "institution": "Chittagong University of Engineering and Technology (CUET)", "year": "2022 - 2026 (Expected)", "details": "CGPA: 3.66 / 4.00" }
+      ],
+      "projects": [], "achievements": [], "publications": [], "experience": [], "blog": [],
+      "footerData": {
+        "description": "Passionate about sustainable nano-enabled biosensors research for a better future.",
+        "location": "Chittagong, Bangladesh",
+        "institution": "CUET | Research | Innovation",
+        "keywords": "Biosensors | Renewable Energy | AI",
+        "social": { "linkedin": "#", "github": "#", "scholar": "#", "researchgate": "#" }
+      }
+    }
+    </script>
+</head>
+<body>
+<div id="root"></div>
+<button id="back-to-top" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+<script>
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('back-to-top');
+    if (btn) btn.classList.toggle('visible', window.scrollY > 300);
+  });
+</script>
+
+<script type="text/babel">
+  const { useState, useEffect, useRef } = React;
+
+  /* ── helpers ────────────────────────────────────────────────── */
+  const fileToBase64 = (file) => new Promise((resolve, reject) => {
+    if (!file) { reject(new Error("No file")); return; }
+    const r = new FileReader();
+    r.onload  = (e) => resolve(e.target.result);
+    r.onerror = ()  => reject(new Error("FileReader error"));
+    r.readAsDataURL(file);
+  });
+
+  const compressImage = (file, maxWidth = 1000, maxHeight = 1000, quality = 0.75) => new Promise((resolve, reject) => {
+    if (!file) { reject(new Error("No file")); return; }
+    const r = new FileReader();
+    r.readAsDataURL(file);
+    r.onload = (e) => {
+      const img = new Image();
+      img.src = e.target.result;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let w = img.width;
+        let h = img.height;
+        if (w > h) {
+          if (w > maxWidth) { h = Math.round((h * maxWidth) / w); w = maxWidth; }
+        } else {
+          if (h > maxHeight) { w = Math.round((w * maxHeight) / h); h = maxHeight; }
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        // Fill canvas with white background (fixes transparent PNG black background issue on JPEG conversion)
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = () => reject(new Error("Image load error"));
+    };
+    r.onerror = () => reject(new Error("FileReader error"));
+  });
+
+  const cleanDataForFirebase = (val) => {
+    if (val === undefined || val === null) return null;
+    if (Array.isArray(val)) {
+      return val.map(cleanDataForFirebase).filter(item => item !== undefined && item !== null);
+    }
+    if (typeof val === 'object') {
+      if (val instanceof Date) return val.toISOString();
+      const res = {};
+      let hasKeys = false;
+      Object.keys(val).forEach(k => {
+        const cleaned = cleanDataForFirebase(val[k]);
+        if (cleaned !== undefined && cleaned !== null) {
+          res[k] = cleaned;
+          hasKeys = true;
+        }
+      });
+      return hasKeys ? res : null;
+    }
+    return val;
+  };
+
+  const Icon = ({ name, size = 20, className = "" }) => {
+    const sz = size >= 48 ? 'text-5xl' : size >= 40 ? 'text-4xl' : size >= 32 ? 'text-3xl'
+             : size >= 24 ? 'text-xl'  : size <= 16 ? 'text-sm'  : 'text-base';
+    return <i className={`${name} ${sz} ${className}`} />;
+  };
+
+  /* ── reusable image upload field ────────────────────────────── */
+  const ImageUploadField = ({ label, value, onChange }) => {
+    const uid = useRef("iuf_" + Math.random().toString(36).slice(2)).current;
+    const handle = async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try { onChange(await compressImage(file)); }
+      catch (err) { alert("Upload failed: " + err.message); }
+      e.target.value = "";
+    };
+    return (
+      <div>
+        <label className="block text-sm font-semibold text-slate-700 mb-2">{label}</label>
+        <div className="flex items-start gap-4">
+          {value && (
+            <img src={value} alt="preview"
+              className="w-24 h-24 object-cover rounded-lg border border-slate-300 flex-shrink-0 bg-white"
+              onError={e => e.target.style.display='none'} />
+          )}
+          <label htmlFor={uid}
+            className="flex-1 flex flex-col items-center justify-center p-6 border-2 border-dashed border-slate-300 rounded-xl bg-white hover:bg-blue-50 hover:border-blue-400 cursor-pointer transition-all">
+            <Icon name="fa-solid fa-cloud-arrow-up" className="text-slate-400 mb-2" size={28} />
+            <span className="text-sm font-semibold text-slate-600">Click to upload image</span>
+            <span className="text-xs text-slate-400 mt-1">PNG · JPG · WEBP</span>
+            <input id={uid} type="file" accept="image/png,image/jpeg,image/webp,image/gif"
+              className="hidden" onChange={handle} />
+          </label>
+        </div>
+      </div>
+    );
+  };
+
+  /* ── ListManager ────────────────────────────────────────────── */
+  const ListManager = ({ title, items, setItems, fields }) => {
+    const [editingId, setEditingId] = useState(null);
+    const [editData,  setEditData]  = useState({});
+    const [isAdding,  setIsAdding]  = useState(false);
+
+    const setF = (k, v) => setEditData(p => ({ ...p, [k]: v }));
+
+    const startAdd = () => {
+      const empty = {};
+      fields.forEach(f => empty[f.key] = '');
+      setEditData(empty); setIsAdding(true); setEditingId(null);
+    };
+    const cancel = () => { setIsAdding(false); setEditingId(null); setEditData({}); };
+    const save = () => {
+      const newItems = isAdding
+        ? [{ ...editData, id: Date.now() }, ...items]
+        : items.map(i => i.id === editingId ? { ...i, ...editData } : i);
+      setItems(newItems);
+      cancel();
+    };
+
+    return (
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-xl font-bold text-slate-800">{title}</h3>
+          {!isAdding && !editingId && (
+            <button onClick={startAdd}
+              className="flex items-center gap-2 text-sm bg-blue-50 text-blue-700 px-4 py-2 rounded-lg font-bold hover:bg-blue-100 transition-colors">
+              <Icon name="fa-solid fa-plus" size={16}/> Add New
+            </button>
+          )}
+        </div>
+
+        {(isAdding || editingId !== null) && (
+          <div className="mb-6 p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4 slide-up">
+            {fields.map(f => (
+              <div key={f.key}>
+                {f.type === 'image' ? (
+                  <ImageUploadField label={f.label} value={editData[f.key]||''} onChange={v => setF(f.key, v)} />
+                ) : f.type === 'textarea' ? (
+                  <>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">{f.label}</label>
+                    <textarea rows="3" value={editData[f.key]||''}
+                      onChange={e => setF(f.key, e.target.value)}
+                      className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+                  </>
+                ) : (
+                  <>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">{f.label}</label>
+                    <input type="text" value={editData[f.key]||''} placeholder={f.placeholder||''}
+                      onChange={e => setF(f.key, e.target.value)}
+                      className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+                  </>
+                )}
+              </div>
+            ))}
+            <div className="flex gap-3 pt-3 border-t border-slate-200">
+              <button onClick={save}
+                className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                <Icon name="fa-solid fa-check" size={18}/> Save
+              </button>
+              <button onClick={cancel}
+                className="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-5 py-2.5 rounded-lg font-medium hover:bg-slate-50 transition-colors">
+                <Icon name="fa-solid fa-xmark" size={18}/> Cancel
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="space-y-3">
+          {(() => {
+            const titleField = fields.find(f => f.key !== 'image' && f.key !== 'icon' && f.key !== 'cover') || fields[0];
+            const titleKey = titleField ? titleField.key : '';
+            return items.map(item => (
+              <div key={item.id}
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-slate-100 bg-slate-50/50 rounded-xl hover:bg-slate-50 gap-4 group transition-colors">
+                <div className="flex items-center gap-4">
+                  {item.image
+                    ? <img src={item.image} alt="" className="w-16 h-16 object-cover rounded-lg border border-slate-200 hidden sm:block flex-shrink-0" onError={e=>e.target.style.display='none'}/>
+                    : item.icon
+                    ? <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0"><Icon name={item.icon} size={24}/></div>
+                    : null}
+                  <div className="min-w-0">
+                    <h4 className="font-bold text-slate-800 truncate">{item[titleKey]}</h4>
+                    <p className="text-sm text-slate-500 mt-1 line-clamp-1">{item.description||item.details||''}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2 self-end sm:self-auto shrink-0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={() => { setEditingId(item.id); setEditData({...item}); setIsAdding(false); }}
+                    className="p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                    <Icon name="fa-solid fa-pen" size={18}/>
+                  </button>
+                  <button onClick={() => setItems(items.filter(i => i.id !== item.id))}
+                    className="p-2 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                    <Icon name="fa-solid fa-trash" size={18}/>
+                  </button>
+                </div>
+              </div>
+            ));
+          })()}
+          {items.length === 0 && !isAdding && (
+            <p className="text-slate-500 text-center py-6 bg-slate-50 rounded-xl border border-dashed border-slate-200">No items added yet.</p>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  /* ── ProfileManager — each field is its OWN state ───────────── */
+  const ProfileManager = ({ profile, setProfile }) => {
+    const [name,       setName]       = useState(profile.name   || '');
+    const [title,      setTitle]      = useState(profile.title  || '');
+    const [bio,        setBio]        = useState(profile.bio    || '');
+    const [email,      setEmail]      = useState(profile.email  || '');
+    const [phone,      setPhone]      = useState(profile.phone  || '');
+    const [avatar,     setAvatar]     = useState(profile.avatar || '');
+    const [avatarZoom, setAvatarZoom] = useState(profile.avatarZoom || 100);
+    const [avatarX,    setAvatarX]    = useState(profile.avatarX || 0);
+    const [avatarY,    setAvatarY]    = useState(profile.avatarY || 0);
+    const [saveStatus, setSaveStatus] = useState('');
+    const avatarInputId = "profile-avatar-input";
+
+    /* sync if Firebase pushes a new profile from outside */
+    useEffect(() => {
+      setName(profile.name   || '');
+      setTitle(profile.title  || '');
+      setBio(profile.bio    || '');
+      setEmail(profile.email  || '');
+      setPhone(profile.phone  || '');
+      setAvatar(profile.avatar || '');
+      setAvatarZoom(profile.avatarZoom || 100);
+      setAvatarX(profile.avatarX || 0);
+      setAvatarY(profile.avatarY || 0);
+    }, [profile.name, profile.title, profile.bio, profile.email, profile.phone, profile.avatar, profile.avatarZoom, profile.avatarX, profile.avatarY]);
+
+    /* ── avatar upload: completely independent of other fields ── */
+    const handleAvatarUpload = async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const compressedBase64 = await compressImage(file);
+        setAvatar(compressedBase64);          // only avatar state changes
+      } catch (err) {
+        alert("Image upload failed: " + err.message);
+      }
+      e.target.value = "";          // allow re-select same file
+    };
+
+    const handleSave = () => {
+      setSaveStatus('saving');
+      const updated = { ...profile, name, title, bio, email, phone, avatar, avatarZoom, avatarX, avatarY };
+      setTimeout(() => {
+        setProfile(updated);        // push to parent App state → HomeView re-renders
+
+        // ── Auto-update OG meta tags with new profile info ──
+        const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute('content', val); };
+        if (name)   { setMeta('meta[property="og:title"]',    `${name} — Researcher | Biosensors & PoC Diagnostics`);
+                      setMeta('meta[name="twitter:title"]',   `${name} — Researcher`);
+                      setMeta('meta[property="og:site_name"]', `${name} Portfolio`); }
+        if (bio)    { setMeta('meta[property="og:description"]', bio.slice(0, 200));
+                      setMeta('meta[name="twitter:description"]', bio.slice(0, 200));
+                      setMeta('meta[name="description"]', bio.slice(0, 200)); }
+        if (avatar) { setMeta('meta[property="og:image"]',   avatar);
+                      setMeta('meta[name="twitter:image"]',  avatar); }
+
+        setSaveStatus('saved');
+        setTimeout(() => setSaveStatus(''), 2500);
+      }, 400);
+    };
+
+    return (
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+          <Icon name="fa-solid fa-user" className="text-[#2042A4]" size={20}/> Profile & Picture
+        </h3>
+
+        <div className="space-y-6">
+          {/* ── Avatar ── */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-3">Profile Picture</label>
+            <div className="flex flex-col lg:flex-row items-start gap-8 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+              {/* preview */}
+              <div className="flex-shrink-0 mx-auto lg:mx-0">
+                {avatar
+                  ? <div className="w-56 h-56 rounded-full overflow-hidden shadow-md bg-white relative">
+                      <img src={avatar} alt="Avatar"
+                        className="w-full h-full object-contain bg-white select-none pointer-events-none"
+                        style={{
+                          transform: `translate(${Number(avatarX || 0)}%, ${Number(avatarY || 0)}%) scale(${Number(avatarZoom || 100) / 100})`,
+                          transformOrigin: 'center'
+                        }}
+                        onError={e => e.target.style.display='none'} />
+                    </div>
+                  : <div className="w-56 h-56 rounded-full bg-blue-50 shadow-md flex items-center justify-center">
+                      <Icon name="fa-solid fa-user" size={64} className="text-blue-200"/>
+                    </div>
+                }
+              </div>
+              {/* upload button & sliders */}
+              <div className="flex-1 space-y-4 w-full">
+                <div className="flex flex-wrap items-center gap-3">
+                  <label htmlFor={avatarInputId}
+                    className="inline-flex items-center gap-2 bg-[#2042A4] text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-800 cursor-pointer transition-colors text-sm shadow-sm">
+                    <Icon name="fa-solid fa-cloud-arrow-up" size={16}/>
+                    Upload Photo
+                    <input
+                      id={avatarInputId}
+                      type="file"
+                      accept="image/png,image/jpeg,image/webp,image/gif"
+                      className="hidden"
+                      onChange={handleAvatarUpload}
+                    />
+                  </label>
+                  {avatar && (
+                    <button onClick={() => { setAvatar(''); setAvatarZoom(100); setAvatarX(0); setAvatarY(0); }}
+                      className="text-sm text-red-550 hover:text-red-700 font-semibold px-3 py-2 hover:bg-red-50 rounded-lg transition-colors">
+                      ✕ Remove
+                    </button>
+                  )}
+                </div>
+                <p className="text-xs text-slate-400">PNG, JPG or WEBP (transparent background images default to white)</p>
+
+                {avatar && (
+                  <div className="pt-4 border-t border-slate-200/60 space-y-4">
+                    <div>
+                      <div className="flex justify-between text-xs font-bold text-slate-505 mb-1 uppercase tracking-wider">
+                        <span>Image Zoom</span>
+                        <span>{avatarZoom}%</span>
+                      </div>
+                      <input type="range" min="0" max="250" step="5" value={avatarZoom}
+                        onChange={e => setAvatarZoom(parseInt(e.target.value))}
+                        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2042A4]" />
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <div className="flex justify-between text-xs font-bold text-slate-505 mb-1 uppercase tracking-wider">
+                          <span>Vertical Offset (Y)</span>
+                          <span>{avatarY}%</span>
+                        </div>
+                        <input type="range" min="-200" max="200" step="1" value={avatarY}
+                          onChange={e => setAvatarY(parseInt(e.target.value))}
+                          className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2042A4]" />
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-xs font-bold text-slate-505 mb-1 uppercase tracking-wider">
+                          <span>Horizontal Offset (X)</span>
+                          <span>{avatarX}%</span>
+                        </div>
+                        <input type="range" min="-200" max="200" step="1" value={avatarX}
+                          onChange={e => setAvatarX(parseInt(e.target.value))}
+                          className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2042A4]" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Name ── */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+            <input type="text" value={name} onChange={e => setName(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none transition-all"
+              placeholder="Your full name" />
+          </div>
+
+          {/* ── Title ── */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Professional Title</label>
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none transition-all"
+              placeholder="e.g. Undergraduate Researcher | Biosensors" />
+          </div>
+
+          {/* ── Bio ── */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Biography</label>
+            <textarea rows="5" value={bio} onChange={e => setBio(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none transition-all"
+              placeholder="Write a short bio..." />
+          </div>
+
+          {/* ── Email ── */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none transition-all"
+              placeholder="your@email.com" />
+          </div>
+
+          {/* ── Phone ── */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none transition-all"
+              placeholder="+880 1xxx-xxxxxx" />
+          </div>
+
+          {/* ── Save ── */}
+          <div className="pt-4 border-t border-slate-100">
+            <button onClick={handleSave} disabled={saveStatus==='saving'}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium transition-colors disabled:opacity-70 ${
+                saveStatus==='saved' ? 'bg-green-600 text-white' : 'bg-[#2042A4] text-white hover:bg-blue-800'}`}>
+              {saveStatus==='saving' ? <><Icon name="fa-solid fa-spinner fa-spin" size={18}/> Saving...</>
+               : saveStatus==='saved' ? <><Icon name="fa-solid fa-check" size={18}/> Saved!</>
+               : <><Icon name="fa-solid fa-floppy-disk" size={18}/> Save Profile Changes</>}
+            </button>
+            <p className="text-xs text-slate-400 mt-2">After saving, click "Publish Changes" at the top to push to Firebase.</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  /* ── CVManager ──────────────────────────────────────────────── */
+  const CVManager = ({ cvData, setCvData }) => {
+    const [cvTitle, setCvTitle] = useState(cvData.title||'');
+    const [cvDesc,  setCvDesc]  = useState(cvData.description||'');
+    const [cvLink,  setCvLink]  = useState(cvData.link||'');
+    const [status,  setStatus]  = useState('');
+
+    useEffect(() => {
+      setCvTitle(cvData.title||''); setCvDesc(cvData.description||''); setCvLink(cvData.link||'');
+    }, [cvData]);
+
+    const save = () => {
+      setStatus('saving');
+      setTimeout(() => { setCvData({ title:cvTitle, description:cvDesc, link:cvLink }); setStatus('saved'); setTimeout(()=>setStatus(''),2500); }, 400);
+    };
+
+    return (
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+          <Icon name="fa-solid fa-file-pdf" className="text-[#2042A4]" size={20}/> Resume / CV Settings
+        </h3>
+        <div className="space-y-5">
+          <div><label className="block text-sm font-semibold text-slate-700 mb-2">CV Title</label>
+            <input type="text" value={cvTitle} onChange={e=>setCvTitle(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none"/></div>
+          <div><label className="block text-sm font-semibold text-slate-700 mb-2">Short Description</label>
+            <textarea rows="3" value={cvDesc} onChange={e=>setCvDesc(e.target.value)}
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none"/></div>
+          <div><label className="block text-sm font-semibold text-slate-700 mb-2">CV Download Link</label>
+            <input type="text" value={cvLink} onChange={e=>setCvLink(e.target.value)} placeholder="https://..."
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none"/></div>
+          <div className="pt-4 border-t border-slate-100">
+            <button onClick={save} disabled={status==='saving'}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium transition-colors disabled:opacity-70 ${status==='saved'?'bg-green-600 text-white':'bg-[#2042A4] text-white hover:bg-blue-800'}`}>
+              {status==='saving'?<><Icon name="fa-solid fa-spinner fa-spin" size={18}/> Saving...</>
+               :status==='saved'?<><Icon name="fa-solid fa-check" size={18}/> Saved!</>
+               :<><Icon name="fa-solid fa-floppy-disk" size={18}/> Save CV Changes</>}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  /* ── PasswordManager removed — use Firebase Forgot Password instead ── */
+
+
+  /* ── AdminLogin — Firebase Auth + Email Password Reset ─────── */
+  const AdminLoginView = ({ onLogin }) => {
+    const [view,       setView]       = useState('login');   // 'login' | 'forgot' | 'sent'
+    const [email,      setEmail]      = useState('cnafiul90@gmail.com');
+    const [pass,       setPass]       = useState('');
+    const [loading,    setLoading]    = useState(false);
+    const [loginErr,   setLoginErr]   = useState('');
+    const [resetErr,   setResetErr]   = useState('');
+    const [resetEmail, setResetEmail] = useState('cnafiul90@gmail.com');
+
+    /* ── wait until Firebase SDK is ready ── */
+    const waitForFirebase = () => new Promise((resolve, reject) => {
+      let tries = 0;
+      const check = setInterval(() => {
+        tries++;
+        if (window.firebaseAuth && window.firebaseSignIn && window.firebaseSendReset) {
+          clearInterval(check); resolve();
+        }
+        if (tries > 40) { clearInterval(check); reject(new Error("Firebase not ready")); }
+      }, 100);
+    });
+
+    /* ── Firebase sign-in ── */
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      if (!email || !pass) { setLoginErr('Please enter both email and password.'); return; }
+      setLoading(true); setLoginErr('');
+      try {
+        await waitForFirebase();
+        await window.firebaseSignIn(window.firebaseAuth, email, pass);
+        onLogin();
+      } catch (err) {
+        const msg = err.message === 'Firebase not ready'
+          ? 'Firebase is still loading. Please wait a moment and try again.'
+          : (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found')
+          ? 'Incorrect email or password.' : 'Login failed. Please try again.';
+        setLoginErr(msg);
+      }
+      setLoading(false);
+    };
+
+    /* ── Firebase send reset email ── */
+    const handleReset = async (e) => {
+      e.preventDefault();
+      if (!resetEmail) { setResetErr('Please enter your email address.'); return; }
+      setLoading(true); setResetErr('');
+      try {
+        await waitForFirebase();
+        await window.firebaseSendReset(window.firebaseAuth, resetEmail);
+        setView('sent');
+      } catch (err) {
+        const msg = err.message === 'Firebase not ready'
+          ? 'Firebase is still loading. Please try again.'
+          : err.code === 'auth/user-not-found'
+          ? 'No account found with this email.' : 'Failed to send reset email. Try again.';
+        setResetErr(msg);
+      }
+      setLoading(false);
+    };
+
+    /* ── LOGIN VIEW ── */
+    if (view === 'login') return (
+      <div className="max-w-md mx-auto mt-10 md:mt-20 p-8 bg-white rounded-2xl shadow-lg border border-slate-100 slide-up">
+        <div className="flex justify-center mb-6">
+          <div className="w-16 h-16 bg-blue-50 text-[#2042A4] rounded-full flex items-center justify-center">
+            <Icon name="fa-solid fa-lock" size={32}/>
+          </div>
+        </div>
+        <h2 className="text-2xl font-extrabold text-center text-slate-800 mb-2">Admin Login</h2>
+        <p className="text-center text-slate-500 mb-8 text-sm">Sign in with your Firebase account to access the dashboard.</p>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+            <input type="email" value={email} onChange={e=>setEmail(e.target.value)} autoFocus
+              className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-[#2042A4] outline-none transition-all"
+              placeholder="your@email.com"/>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Password</label>
+            <input type="password" value={pass} onChange={e=>setPass(e.target.value)}
+              className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-[#2042A4] outline-none transition-all"
+              placeholder="Enter password..."/>
+          </div>
+          {loginErr && (
+            <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-xl p-3">
+              <Icon name="fa-solid fa-circle-exclamation" className="text-red-500 flex-shrink-0" size={18}/>
+              <p className="text-red-600 text-sm font-medium">{loginErr}</p>
+            </div>
+          )}
+          <button type="submit" disabled={loading}
+            className="w-full py-4 bg-[#2042A4] text-white rounded-xl font-bold hover:bg-blue-800 transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2">
+            {loading ? <><Icon name="fa-solid fa-spinner fa-spin" size={18}/> Signing in...</> : <><Icon name="fa-solid fa-right-to-bracket" size={18}/> Sign In</>}
+          </button>
+          <button type="button" onClick={()=>{setView('forgot');setResetErr('');}}
+            className="w-full py-2.5 text-slate-500 hover:text-[#2042A4] text-sm font-medium transition-colors">
+            Forgot password?
+          </button>
+        </form>
+      </div>
+    );
+
+    /* ── FORGOT PASSWORD VIEW ── */
+    if (view === 'forgot') return (
+      <div className="max-w-md mx-auto mt-10 md:mt-20 p-8 bg-white rounded-2xl shadow-lg border border-slate-100 slide-up">
+        <div className="flex justify-center mb-6">
+          <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center">
+            <Icon name="fa-solid fa-envelope-open-text" size={32}/>
+          </div>
+        </div>
+        <h2 className="text-2xl font-extrabold text-center text-slate-800 mb-2">Reset Password</h2>
+        <p className="text-center text-slate-500 mb-8 text-sm">Enter your Firebase account email. We will send you a password reset link.</p>
+        <form onSubmit={handleReset} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+            <input type="email" value={resetEmail} onChange={e=>setResetEmail(e.target.value)} autoFocus
+              className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-amber-100 focus:border-amber-400 outline-none transition-all"
+              placeholder="your@email.com"/>
+          </div>
+          {resetErr && (
+            <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-xl p-3">
+              <Icon name="fa-solid fa-circle-exclamation" className="text-red-500 flex-shrink-0" size={18}/>
+              <p className="text-red-600 text-sm font-medium">{resetErr}</p>
+            </div>
+          )}
+          <button type="submit" disabled={loading}
+            className="w-full py-4 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2">
+            {loading ? <><Icon name="fa-solid fa-spinner fa-spin" size={18}/> Sending...</> : <><Icon name="fa-solid fa-paper-plane" size={18}/> Send Reset Email</>}
+          </button>
+          <button type="button" onClick={()=>setView('login')}
+            className="w-full py-2.5 text-slate-500 hover:text-[#2042A4] text-sm font-medium transition-colors">
+            Back to Login
+          </button>
+        </form>
+      </div>
+    );
+
+    /* ── EMAIL SENT CONFIRMATION ── */
+    return (
+      <div className="max-w-md mx-auto mt-10 md:mt-20 p-8 bg-white rounded-2xl shadow-lg border border-slate-100 slide-up text-center">
+        <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Icon name="fa-solid fa-envelope-circle-check" size={40}/>
+        </div>
+        <h2 className="text-2xl font-extrabold text-slate-800 mb-3">Check Your Email!</h2>
+        <p className="text-slate-600 mb-2">A password reset link has been sent to:</p>
+        <p className="text-[#2042A4] font-bold mb-6 break-all">{resetEmail}</p>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-left">
+          <p className="text-sm text-blue-800 font-semibold mb-2">What to do next:</p>
+          <ol className="text-sm text-blue-700 space-y-1 list-decimal list-inside">
+            <li>Open your email inbox</li>
+            <li>Click the reset link from Firebase/Google</li>
+            <li>Set a new password</li>
+            <li>Come back here and log in</li>
+          </ol>
+        </div>
+        <button onClick={()=>setView('login')}
+          className="w-full py-3 bg-[#2042A4] text-white rounded-xl font-bold hover:bg-blue-800 transition-all">
+          Back to Login
+        </button>
+      </div>
+    );
+  };
+
+  /* ═══════════════════════════════════════════════════════════════
+     PUBLIC VIEWS
+  ═══════════════════════════════════════════════════════════════ */
+  const HomeView = ({ profile, setActiveTab, homeSlider, researchInterests }) => {
+    const [slide, setSlide] = useState(0);
+
+    useEffect(() => {
+      if (!homeSlider.length) return;
+      const t = setInterval(() => setSlide(p => (p+1) % homeSlider.length), 5000);
+      return () => clearInterval(t);
+    }, [homeSlider.length]);
+
+    useEffect(() => {
+      if (slide >= homeSlider.length) {
+        setSlide(0);
+      }
+    }, [homeSlider.length, slide]);
+
+    return (
+      <div className="max-w-6xl mx-auto">
+        {/* hero */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-20 slide-up">
+          <div className="flex-1 space-y-6 flex flex-col items-start text-left">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[#2042A4] md:whitespace-nowrap">{profile.name}</h1>
+            <h2 className="text-2xl md:text-3xl text-blue-500 font-medium leading-snug whitespace-pre-line">{profile.title}</h2>
+            <p className="text-slate-600 text-lg leading-relaxed text-left max-w-2xl font-light">{profile.bio}</p>
+            <div className="flex flex-wrap gap-4 pt-6">
+              <button onClick={()=>setActiveTab('contact')} className="px-8 py-3 rounded-lg text-white font-bold bg-[#2042A4] hover:bg-blue-800 hover:shadow-lg hover:-translate-y-1 transition-all">Contact Me</button>
+              <button onClick={()=>setActiveTab('cv')}      className="px-8 py-3 rounded-lg font-bold border-2 border-[#2042A4] text-[#2042A4] hover:bg-blue-50 hover:-translate-y-1 transition-all">View CV</button>
+              <button onClick={()=>setActiveTab('projects')} className="px-8 py-3 rounded-lg font-bold border-2 border-[#2042A4] text-[#2042A4] hover:bg-blue-50 hover:-translate-y-1 transition-all">View Projects</button>
+            </div>
+          </div>
+          {/* avatar */}
+          <div className="flex-shrink-0 relative group self-center md:self-auto flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] mt-8 md:mt-0">
+            {/* Soft pulsing glow backdrop */}
+            <div className="absolute inset-4 bg-gradient-to-tr from-blue-600/10 via-indigo-600/5 to-purple-600/8 rounded-full blur-3xl z-0 group-hover:bg-blue-600/15 transition-all duration-700 w-full h-full animate-pulse-slow"/>
+            
+            {/* Circular Image Container (Clean circle, no border, sharp shadow) */}
+            <div className="relative z-10 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden bg-white shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+              {profile.avatar
+                ? <img src={profile.avatar} alt={profile.name} className="w-full h-full object-contain bg-white select-none pointer-events-none"
+                    style={{
+                      transform: `translate(${Number(profile.avatarX || 0)}%, ${Number(profile.avatarY || 0)}%) scale(${Number(profile.avatarZoom || 100) / 100})`,
+                      transformOrigin: 'center'
+                    }}
+                    onError={e => e.target.style.display='none'}/>
+                : <div className="w-full h-full flex items-center justify-center bg-blue-50">
+                    <Icon name="fa-solid fa-user" size={80} className="text-blue-200"/>
+                  </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        {/* Down Arrow Indicator */}
+        <div className="flex justify-center mt-8 mb-24 animate-bounce">
+          <Icon name="fa-solid fa-arrow-down" className="text-slate-950" size={20}/>
+        </div>
+
+        {/* research interests */}
+        {researchInterests.length > 0 && (
+          <div className="mb-24 slide-up">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#2042A4] mb-14">Research Interests</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {researchInterests.map(i => (
+                <div key={i.id} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-50 flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-md transition-all duration-300 group">
+                  <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#2042A4] transition-colors duration-300">
+                    <Icon name={i.icon||"fa-solid fa-star"} size={40} className="text-[#2042A4] group-hover:text-white transition-colors duration-300"/>
+                  </div>
+                  <h3 className="font-bold text-lg text-[#2042A4] mb-3">{i.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{i.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* slider */}
+        {homeSlider.length > 0 && (
+          <div className="slide-up">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#2042A4] mb-12">Latest Updates</h2>
+            <div className="relative w-full max-w-5xl mx-auto h-[450px] bg-slate-900 rounded-3xl overflow-hidden group shadow-xl">
+              <img src={homeSlider[slide]?.image} alt={homeSlider[slide]?.caption}
+                className="w-full h-full object-contain bg-slate-800" onError={e=>e.target.style.display='none'}/>
+              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                <h3 className="text-white text-2xl font-bold">{homeSlider[slide]?.caption}</h3>
+              </div>
+              <button onClick={()=>setSlide(p=>(p-1+homeSlider.length)%homeSlider.length)}
+                className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-[#2042A4] p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
+                <Icon name="fa-solid fa-chevron-left" size={28}/>
+              </button>
+              <button onClick={()=>setSlide(p=>(p+1)%homeSlider.length)}
+                className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-[#2042A4] p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
+                <Icon name="fa-solid fa-chevron-right" size={28}/>
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {homeSlider.map((_,i)=>(
+                  <button key={i} onClick={()=>setSlide(i)}
+                    className={`h-2 rounded-full transition-all ${i===slide?'bg-white w-6':'bg-white/50 w-2'}`}/>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const CVView = ({ cvData }) => (
+    <div className="max-w-4xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Curriculum Vitae</h2>
+      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center text-center max-w-sm">
+        <Icon name="fa-solid fa-file-lines" size={48} className="text-[#2042A4] mb-4"/>
+        <h3 className="text-xl font-bold text-slate-800 mb-2">{cvData.title}</h3>
+        <p className="text-slate-600 text-sm mb-6">{cvData.description}</p>
+        <a href={cvData.link} target="_blank" rel="noopener noreferrer"
+          className="flex items-center gap-2 bg-[#2042A4] text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors w-full justify-center">
+          <Icon name="fa-solid fa-file-arrow-down" size={18}/> Download / View CV
+        </a>
+      </div>
+    </div>
+  );
+
+  const EducationView = ({ education }) => (
+    <div className="max-w-4xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Educational Journey</h2>
+      <div className="space-y-10">
+        {education.map(e => (
+          <div key={e.id} className="relative pl-6 border-l-2 border-blue-200">
+            <div className="absolute -left-[9px] top-1.5 w-4 h-4 bg-[#2042A4] rounded-full ring-4 ring-white"/>
+            <h3 className="text-xl font-bold text-slate-800">{e.degree}</h3>
+            <div className="text-sm font-bold text-slate-500 mb-2 mt-1">{e.year}</div>
+            <p className="text-blue-700 font-medium mb-3">{e.institution}</p>
+            <div className="text-slate-600 text-sm whitespace-pre-line">{e.details}</div>
+          </div>
+        ))}
+        {education.length===0 && <p className="text-slate-500 text-center py-12">No education entries yet.</p>}
+      </div>
+    </div>
+  );
+
+  const ProjectsView = ({ projects }) => (
+    <div className="max-w-5xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Skills & Projects</h2>
+      <div className="grid gap-8">
+        {projects.map(p => (
+          <div key={p.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col md:flex-row hover:shadow-md transition-shadow">
+            {p.image && <div className="md:w-1/3 h-48 md:h-auto bg-slate-100 flex-shrink-0"><img src={p.image} alt={p.title} className="w-full h-full object-cover" onError={e=>e.target.style.display='none'}/></div>}
+            <div className="p-6 md:p-8 flex flex-col justify-center">
+              <h3 className="text-2xl font-bold text-slate-800 mb-3">{p.title}</h3>
+              <div className="mb-4"><span className="text-xs font-bold bg-blue-50 text-blue-700 px-3 py-1 rounded-full uppercase tracking-wider">Tools: {p.tools}</span></div>
+              <p className="text-slate-600">{p.description}</p>
+            </div>
+          </div>
+        ))}
+        {projects.length===0 && <p className="text-slate-500 text-center py-12">No projects yet.</p>}
+      </div>
+    </div>
+  );
+
+  const PublicationsView = ({ publications }) => (
+    <div className="max-w-5xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Publications</h2>
+      <div className="space-y-6">
+        {publications.map(p => (
+          <div key={p.id} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="bg-blue-50 text-[#2042A4] text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">{p.year}</span>
+              <span className="text-sm font-semibold text-slate-500">{p.journal}</span>
+            </div>
+            <h3 className="text-xl font-bold text-slate-800 mb-3">{p.title}</h3>
+            <p className="text-slate-600">{p.description}</p>
+          </div>
+        ))}
+        {publications.length===0 && <p className="text-slate-500 text-center py-12">No publications yet.</p>}
+      </div>
+    </div>
+  );
+
+  const ExperienceView = ({ experience }) => (
+    <div className="max-w-4xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Experience</h2>
+      <div className="space-y-10">
+        {experience.map(e => (
+          <div key={e.id} className="relative pl-6 border-l-2 border-blue-200">
+            <div className="absolute -left-[9px] top-1.5 w-4 h-4 bg-[#2042A4] rounded-full ring-4 ring-white"/>
+            <h3 className="text-xl font-bold text-slate-800">{e.role}</h3>
+            <div className="text-sm font-bold text-slate-500 mb-2 mt-1">{e.duration}</div>
+            <p className="text-[#2042A4] font-medium mb-3">{e.company}</p>
+            <div className="text-slate-600 text-sm whitespace-pre-line">{e.description}</div>
+          </div>
+        ))}
+        {experience.length===0 && <p className="text-slate-500 text-center py-12">No experience yet.</p>}
+      </div>
+    </div>
+  );
+
+  const AchievementsView = ({ achievements }) => (
+    <div className="max-w-5xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Achievements</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {achievements.map(a => (
+          <div key={a.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-all">
+            {a.image
+              ? <div className="h-64 overflow-hidden"><img src={a.image} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={e=>e.target.style.display='none'}/></div>
+              : <div className="h-48 bg-slate-50 flex items-center justify-center"><Icon name="fa-solid fa-trophy" size={48} className="text-slate-300"/></div>}
+            <div className="p-6">
+              <div className="text-sm text-[#2042A4] font-bold mb-2">{a.date}</div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{a.title}</h3>
+              <p className="text-slate-600 text-sm">{a.description}</p>
+            </div>
+          </div>
+        ))}
+        {achievements.length===0 && <p className="text-slate-500 text-center py-12 col-span-2">No achievements yet.</p>}
+      </div>
+    </div>
+  );
+
+  const BlogView = ({ blog }) => (
+    <div className="max-w-5xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-10 text-[#2042A4] border-b pb-4 border-slate-200">Blog</h2>
+      <div className="grid md:grid-cols-2 gap-8">
+        {blog.map(p => (
+          <div key={p.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
+            {p.image && <img src={p.image} alt={p.title} className="w-full h-48 object-cover" onError={e=>e.target.style.display='none'}/>}
+            <div className="p-6">
+              <span className="text-xs font-bold text-[#2042A4] uppercase tracking-wider mb-2 block">{p.date}</span>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">{p.title}</h3>
+              <p className="text-slate-600 mb-4">{p.description}</p>
+              <button className="text-[#2042A4] font-bold text-sm flex items-center gap-1 hover:text-blue-800">Read Article <Icon name="fa-solid fa-chevron-right" size={16}/></button>
+            </div>
+          </div>
+        ))}
+        {blog.length===0 && <p className="text-slate-500 text-center py-12 col-span-2">No posts yet.</p>}
+      </div>
+    </div>
+  );
+
+  const ContactView = ({ profile }) => (
+    <div className="max-w-3xl mx-auto slide-up">
+      <h2 className="text-3xl font-bold mb-6 text-[#2042A4] border-b pb-4 border-slate-200">Get In Touch</h2>
+      <p className="text-slate-600 mb-8 text-lg">I'm always open to discussing research, collaborations, or any inquiries.</p>
+      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+        {/* Email */}
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 bg-blue-50 text-[#2042A4] rounded-full flex items-center justify-center flex-shrink-0">
+            <Icon name="fa-solid fa-envelope" size={24}/>
+          </div>
+          <div>
+            <h4 className="font-bold text-slate-800">Email Address</h4>
+            <a href={`mailto:${profile.email}`} className="text-[#2042A4] hover:underline font-medium">{profile.email || '—'}</a>
+          </div>
+        </div>
+        {/* Phone */}
+        {profile.phone && (
+          <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <div className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <Icon name="fa-solid fa-phone" size={24}/>
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-800">Phone Number</h4>
+              <a href={`tel:${profile.phone}`} className="text-green-600 hover:underline font-medium">{profile.phone}</a>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  /* ── SocialManager — edit footer social links from admin ─── */
+  const SocialManager = ({ footerData, setFooterData }) => {
+    const [linkedin,    setLinkedin]    = useState(footerData.social?.linkedin    || '');
+    const [github,      setGithub]      = useState(footerData.social?.github      || '');
+    const [scholar,     setScholar]     = useState(footerData.social?.scholar     || '');
+    const [researchgate,setResearchgate]= useState(footerData.social?.researchgate|| '');
+    const [location,    setLocation]    = useState(footerData.location            || '');
+    const [institution, setInstitution] = useState(footerData.institution         || '');
+    const [keywords,    setKeywords]    = useState(footerData.keywords            || '');
+    const [description, setDescription] = useState(footerData.description         || '');
+    const [status,      setStatus]      = useState('');
+
+    useEffect(() => {
+      setLinkedin(footerData.social?.linkedin    || '');
+      setGithub(footerData.social?.github        || '');
+      setScholar(footerData.social?.scholar      || '');
+      setResearchgate(footerData.social?.researchgate || '');
+      setLocation(footerData.location            || '');
+      setInstitution(footerData.institution      || '');
+      setKeywords(footerData.keywords            || '');
+      setDescription(footerData.description      || '');
+    }, [footerData]);
+
+    const save = () => {
+      setStatus('saving');
+      setTimeout(() => {
+        setFooterData({ ...footerData, description, location, institution, keywords,
+          social: { linkedin, github, scholar, researchgate } });
+        setStatus('saved');
+        setTimeout(() => setStatus(''), 2500);
+      }, 400);
+    };
+
+    const inp = "w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2042A4] outline-none transition-all";
+
+    return (
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+          <Icon name="fa-solid fa-share-nodes" className="text-[#2042A4]" size={20}/> Footer & Social Links
+        </h3>
+        <div className="space-y-5">
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Footer Description</label>
+            <textarea rows="2" value={description} onChange={e=>setDescription(e.target.value)} className={inp}/>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Location</label>
+              <input type="text" value={location} onChange={e=>setLocation(e.target.value)} className={inp} placeholder="Chittagong, Bangladesh"/>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Institution</label>
+              <input type="text" value={institution} onChange={e=>setInstitution(e.target.value)} className={inp} placeholder="CUET | Research"/>
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Keywords</label>
+            <input type="text" value={keywords} onChange={e=>setKeywords(e.target.value)} className={inp} placeholder="Biosensors | AI | Research"/>
+          </div>
+          <div className="border-t border-slate-100 pt-5">
+            <p className="text-sm font-bold text-slate-700 mb-4">Social Links</p>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="fa-brands fa-linkedin" className="text-white" size={18}/>
+                </div>
+                <input type="url" value={linkedin} onChange={e=>setLinkedin(e.target.value)} className={inp} placeholder="https://linkedin.com/in/yourname"/>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="fa-brands fa-github" className="text-white" size={18}/>
+                </div>
+                <input type="url" value={github} onChange={e=>setGithub(e.target.value)} className={inp} placeholder="https://github.com/yourname"/>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="fa-solid fa-graduation-cap" className="text-white" size={18}/>
+                </div>
+                <input type="url" value={scholar} onChange={e=>setScholar(e.target.value)} className={inp} placeholder="https://scholar.google.com/citations?user=..."/>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="fa-brands fa-researchgate" className="text-white" size={18}/>
+                </div>
+                <input type="url" value={researchgate} onChange={e=>setResearchgate(e.target.value)} className={inp} placeholder="https://researchgate.net/profile/..."/>
+              </div>
+            </div>
+          </div>
+          <div className="pt-4 border-t border-slate-100">
+            <button onClick={save} disabled={status==='saving'}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium transition-colors disabled:opacity-70 ${status==='saved'?'bg-green-600 text-white':'bg-[#2042A4] text-white hover:bg-blue-800'}`}>
+              {status==='saving' ? <><Icon name="fa-solid fa-spinner fa-spin" size={18}/> Saving...</>
+               : status==='saved' ? <><Icon name="fa-solid fa-check" size={18}/> Saved!</>
+               : <><Icon name="fa-solid fa-floppy-disk" size={18}/> Save Footer & Links</>}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  /* ═══════════════════════════════════════════════════════════════
+     APP ROOT
+  ═══════════════════════════════════════════════════════════════ */
+  const App = () => {
+    const [activeTab, setActiveTabRaw] = useState(() => {
+      // Check URL for ?admin on first load
+      return window.location.search.includes('admin') ? 'admin' : 'home';
+    });
+    const setActiveTab = (tab) => {
+      setActiveTabRaw(tab);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Update URL — add ?admin when entering admin, remove when leaving
+      if (tab === 'admin') {
+        window.history.replaceState(null, '', '?admin');
+      } else {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    };
+    const [isMobileMenuOpen,    setIsMobileMenuOpen]    = useState(false);
+    const [isExporting,         setIsExporting]         = useState(false);
+    const [isDataLoaded,        setIsDataLoaded]        = useState(false);
+    const [isAdminAuthenticated,setIsAdminAuthenticated]= useState(false);
+
+    const [appData] = useState(() => {
+      try { return JSON.parse(document.getElementById('portfolio-data').textContent); }
+      catch { return {}; }
+    });
+
+    /* ── state ── */
+    const [profile,          setProfile]          = useState(appData.profile          || {});
+    const [footerData,        setFooterData]        = useState(appData.footerData        || {});
+    const [homeSlider,       setHomeSlider]       = useState(appData.homeSlider        || []);
+    const [researchInterests,setResearchInterests]= useState(appData.researchInterests || []);
+    const [cvData,           setCvData]           = useState(appData.cvData            || {});
+    const [education,        setEducation]        = useState(appData.education         || []);
+    const [projects,         setProjects]         = useState(appData.projects          || []);
+    const [achievements,     setAchievements]     = useState(appData.achievements      || []);
+    const [publications,     setPublications]     = useState(appData.publications      || []);
+    const [experience,       setExperience]       = useState(appData.experience        || []);
+    const [blog,             setBlog]             = useState(appData.blog              || []);
+
+ 
+    const [syncStatus, setSyncStatus] = useState({ type: '', message: '' });
+
+    const showSyncNotification = (type, message) => {
+      setSyncStatus({ type, message });
+      if (type === 'success') {
+        setTimeout(() => {
+          setSyncStatus(p => p.message === message ? { type: '', message: '' } : p);
+        }, 3000);
+      } else if (type === 'error') {
+        setTimeout(() => {
+          setSyncStatus(p => p.message === message ? { type: '', message: '' } : p);
+        }, 6000);
+      }
+    };
+
+    /* ── Instant Real-time Cloud Auto-Sync Setter Helper ── */
+    const createAutoSaveSetter = (stateKey, localSetter) => {
+      return (newValue) => {
+        localSetter(newValue);
+        if (window.db && window.firebaseSet && window.firebaseRef) {
+          try {
+            const cleaned = cleanDataForFirebase(newValue);
+            showSyncNotification('syncing', `Syncing changes for ${stateKey}...`);
+            window.firebaseSet(window.firebaseRef(window.db, `portfolioData/${stateKey}`), cleaned)
+              .then(() => {
+                showSyncNotification('success', `Successfully synced ${stateKey}!`);
+              })
+              .catch(err => {
+                console.error(`Sync error for ${stateKey}:`, err);
+                showSyncNotification('error', `Sync failed: ${err.message}`);
+              });
+          } catch (err) {
+            console.error(`Synchronous sync error for ${stateKey}:`, err);
+            showSyncNotification('error', `Sync failed: ${err.message}`);
+          }
+        }
+      };
+    };
+
+    /* ── Persistent Firebase Auth state listener ── */
+    useEffect(() => {
+      let unsubscribe;
+      const setupAuthListener = () => {
+        if (window.firebaseAuth && window.firebaseOnAuthStateChanged) {
+          unsubscribe = window.firebaseOnAuthStateChanged(window.firebaseAuth, (user) => {
+            if (user) {
+              setIsAdminAuthenticated(true);
+            } else {
+              setIsAdminAuthenticated(false);
+            }
+          });
+          return true;
+        }
+        return false;
+      };
+
+      const timer = setInterval(() => {
+        if (setupAuthListener()) {
+          clearInterval(timer);
+        }
+      }, 100);
+
+      return () => {
+        clearInterval(timer);
+        if (unsubscribe) unsubscribe();
+      };
+    }, []);
+
+    /* ── ONE-TIME Firebase read on mount (no realtime listener = no overwrite) ── */
+    useEffect(() => {
+      const load = async () => {
+        try {
+          if (window.db && window.firebaseRef && window.firebaseGet) {
+            const snap = await window.firebaseGet(window.firebaseRef(window.db, 'portfolioData'));
+            const d = snap.val();
+            if (d) {
+              const toArray = (val) => {
+                if (!val) return [];
+                if (Array.isArray(val)) return val.filter(Boolean);
+                if (typeof val === 'object') return Object.values(val).filter(Boolean);
+                return [];
+              };
+
+              setProfile(d.profile || {});
+              setHomeSlider(d.homeSlider !== undefined ? toArray(d.homeSlider) : appData.homeSlider || []);
+              setResearchInterests(d.researchInterests !== undefined ? toArray(d.researchInterests) : appData.researchInterests || []);
+              setCvData(d.cvData || {});
+              setEducation(d.education !== undefined ? toArray(d.education) : appData.education || []);
+              setProjects(d.projects !== undefined ? toArray(d.projects) : appData.projects || []);
+              setAchievements(d.achievements !== undefined ? toArray(d.achievements) : appData.achievements || []);
+              setPublications(d.publications !== undefined ? toArray(d.publications) : appData.publications || []);
+              setExperience(d.experience !== undefined ? toArray(d.experience) : appData.experience || []);
+              setBlog(d.blog !== undefined ? toArray(d.blog) : appData.blog || []);
+              setFooterData(d.footerData || {});
+
+              // ── Auto-update OG tags from Firebase profile ──
+              const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute('content', val); };
+              if (d.profile?.name)   { setMeta('meta[property="og:title"]',    `${d.profile.name} — Researcher | Biosensors & PoC Diagnostics`);
+                                       setMeta('meta[name="twitter:title"]',   `${d.profile.name} — Researcher`);
+                                       setMeta('meta[property="og:site_name"]', `${d.profile.name} Portfolio`);
+                                       document.title = `${d.profile.name} - Portfolio`; }
+              if (d.profile?.bio)    { setMeta('meta[property="og:description"]', d.profile.bio.slice(0, 200));
+                                       setMeta('meta[name="twitter:description"]', d.profile.bio.slice(0, 200));
+                                       setMeta('meta[name="description"]', d.profile.bio.slice(0, 200)); }
+              if (d.profile?.avatar) { setMeta('meta[property="og:image"]',  d.profile.avatar);
+                                       setMeta('meta[name="twitter:image"]', d.profile.avatar); }
+            }
+          }
+        } catch (err) { console.warn("Firebase load error:", err); }
+        setIsDataLoaded(true);
+      };
+      // Wait until Firebase SDK is ready
+      const timer = setInterval(() => {
+        if (window.firebaseGet) { clearInterval(timer); load(); }
+      }, 100);
+      // Fallback: show content after 4s even if Firebase never loads
+      const fallback = setTimeout(() => { clearInterval(timer); setIsDataLoaded(true); }, 4000);
+      return () => { clearInterval(timer); clearTimeout(fallback); };
+    }, []);
+
+    /* ── Publish to Firebase ── */
+    const handlePublish = async () => {
+      setIsExporting(true);
+      try {
+        const data = { profile, homeSlider, researchInterests, cvData, education, projects, achievements, publications, experience, blog, footerData };
+        await window.firebaseSet(window.firebaseRef(window.db, 'portfolioData'), data);
+        alert("✅ Published! Changes saved to Firebase.");
+      } catch (err) { alert("❌ Publish failed: " + err.message); }
+      setIsExporting(false);
+    };
+
+    const navItems = [
+      { id: 'home',         label: 'Home' },
+      { id: 'education',    label: 'Education' },
+      { id: 'projects',     label: 'Projects' },
+      { id: 'publications', label: 'Publications' },
+      { id: 'experience',   label: 'Experience' },
+      { id: 'achievements', label: 'Achievements' },
+      { id: 'cv',           label: 'CV' },
+      { id: 'contact',      label: 'Contact' },
+      { id: 'blog',         label: 'Blog' },
+    ];
+
+    /* ── Footer ── */
+    const Footer = () => (
+      <footer className="bg-[#2042A4] text-white py-16 mt-20">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h2 className="text-2xl font-bold mb-4">{profile.name}</h2>
+              <p className="text-blue-100 text-sm mb-6 leading-relaxed max-w-md">{footerData.description}</p>
+              <ul className="space-y-3 text-sm text-blue-100">
+                <li className="flex items-center gap-2"><Icon name="fa-solid fa-location-dot" className="text-red-400"/>{footerData.location}</li>
+                <li className="flex items-center gap-2"><Icon name="fa-solid fa-graduation-cap" className="text-amber-300"/>{footerData.institution}</li>
+                <li className="flex items-center gap-2"><Icon name="fa-solid fa-bolt" className="text-amber-400"/>{footerData.keywords}</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-4 border-b border-blue-800/50 pb-2">Let's Connect</h3>
+              <div className="flex gap-3">
+                <a href={footerData.social?.linkedin||"#"} target="_blank" className="w-10 h-10 rounded bg-blue-600 hover:bg-blue-500 flex items-center justify-center transition-colors"><Icon name="fa-brands fa-linkedin" size={20}/></a>
+                <a href={footerData.social?.github||"#"}   target="_blank" className="w-10 h-10 rounded bg-blue-600 hover:bg-blue-500 flex items-center justify-center transition-colors"><Icon name="fa-brands fa-github" size={20}/></a>
+                <a href={footerData.social?.scholar||"#"}  target="_blank" className="w-10 h-10 rounded bg-blue-600 hover:bg-blue-500 flex items-center justify-center transition-colors"><Icon name="fa-solid fa-graduation-cap" size={20}/></a>
+                <a href={footerData.social?.researchgate||"#"} target="_blank" className="w-10 h-10 rounded bg-blue-600 hover:bg-blue-500 flex items-center justify-center transition-colors"><Icon name="fa-brands fa-researchgate" size={20}/></a>
+                <a href={`mailto:${profile.email}`}        className="w-10 h-10 rounded bg-blue-600 hover:bg-blue-500 flex items-center justify-center transition-colors"><Icon name="fa-solid fa-envelope" size={20}/></a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-blue-800/50 pt-8 text-center">
+            <p className="text-xs text-blue-300">© {new Date().getFullYear()} {profile.name}. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+    );
+
+    if (!isDataLoaded) return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F8FAFC]">
+        <Icon name="fa-solid fa-spinner fa-spin" size={48} className="text-[#2042A4] mb-4"/>
+        <p className="text-slate-600 font-semibold">Syncing with Cloud Database...</p>
+      </div>
+    );
+
+    return (
+      <div className="min-h-screen bg-transparent text-slate-900 flex flex-col relative overflow-x-hidden">
+        {/* Soft Background Mesh Decorative Blurs */}
+        <div className="fixed top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-blue-500/5 blur-[100px] pointer-events-none z-[-1]"/>
+        <div className="fixed bottom-[-10%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-indigo-500/5 blur-[100px] pointer-events-none z-[-1]"/>
+        <div className="fixed top-[40%] left-[50%] -translate-x-1/2 w-[35vw] h-[35vw] rounded-full bg-purple-500/3 blur-[90px] pointer-events-none z-[-1]"/>
+
+        {/* HEADER */}
+        <header className="fixed top-0 left-0 right-0 h-20 bg-white border-b border-slate-200 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 shadow-sm">
+          <button onClick={()=>{setActiveTab('home');window.scrollTo(0,0);}} className="font-bold text-2xl text-[#2042A4]">{profile.name}</button>
+          <nav className="hidden lg:flex items-center gap-1">
+            {navItems.map(({id, label}) => (
+              <button key={id} onClick={()=>setActiveTab(id)}
+                className={`px-4 py-2 text-sm font-semibold rounded transition-colors ${activeTab===id?'bg-[#2042A4] text-white':'text-slate-600 hover:text-[#2042A4] hover:bg-blue-50'}`}>
+                {label}
+              </button>
+            ))}
+          </nav>
+          <button className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+            onClick={()=>setIsMobileMenuOpen(v=>!v)}>
+            <Icon name={isMobileMenuOpen?"fa-solid fa-xmark":"fa-solid fa-bars"} size={24}/>
+          </button>
+        </header>
+
+        {/* MOBILE MENU */}
+        {isMobileMenuOpen && (
+          <div className="fixed top-20 left-0 right-0 z-40 bg-white border-b border-slate-200 shadow-lg lg:hidden">
+            <nav className="flex flex-col p-4 gap-1 max-h-[80vh] overflow-y-auto">
+              {navItems.map(({id, label}) => (
+                <button key={id} onClick={()=>{setActiveTab(id);setIsMobileMenuOpen(false);}}
+                  className={`px-4 py-3 text-sm font-semibold rounded text-left transition-colors ${activeTab===id?'bg-[#2042A4] text-white':'text-slate-600 hover:bg-slate-50'}`}>
+                  {label}
+                </button>
+              ))}
+            </nav>
+          </div>
+        )}
+
+        {/* MAIN */}
+        <main className="flex-1 w-full px-6 md:px-8 lg:px-12 xl:px-20 pt-28 pb-20">
+          {activeTab !== 'admin' && (
+            <div key={activeTab} className="page-enter">
+              {activeTab==='home'         && <HomeView profile={profile} setActiveTab={setActiveTab} homeSlider={homeSlider} researchInterests={researchInterests}/>}
+              {activeTab==='education'    && <EducationView education={education}/>}
+              {activeTab==='projects'     && <ProjectsView projects={projects}/>}
+              {activeTab==='publications' && <PublicationsView publications={publications}/>}
+              {activeTab==='experience'   && <ExperienceView experience={experience}/>}
+              {activeTab==='achievements' && <AchievementsView achievements={achievements}/>}
+              {activeTab==='cv'           && <CVView cvData={cvData}/>}
+              {activeTab==='contact'      && <ContactView profile={profile}/>}
+              {activeTab==='blog'         && <BlogView blog={blog}/>}
+            </div>
+          )}
+
+          {activeTab==='admin' && !isAdminAuthenticated && (
+            <AdminLoginView onLogin={()=>setIsAdminAuthenticated(true)}/>
+          )}
+
+          {activeTab==='admin' && isAdminAuthenticated && (
+            <div className="slide-up max-w-4xl mx-auto">
+              {/* Publish banner */}
+              <div className="bg-emerald-50 border-2 border-emerald-600 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-lg">
+                <div>
+                  <h3 className="text-xl font-bold text-emerald-900 mb-1">⚡ Live Real-time Cloud Sync Active</h3>
+                  <p className="text-emerald-700 text-sm font-medium">All changes you make below are instantly synced and saved to Firebase in real-time. No manual publish required!</p>
+                </div>
+                <div className="flex flex-wrap gap-3 w-full md:w-auto">
+                  <button onClick={async () => {
+                    try {
+                      if (window.firebaseSignOut && window.firebaseAuth) {
+                        await window.firebaseSignOut(window.firebaseAuth);
+                        setIsAdminAuthenticated(false);
+                      }
+                    } catch (err) { alert("Logout failed: " + err.message); }
+                  }}
+                    className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white border border-slate-300 text-slate-750 px-5 py-3 rounded-xl font-bold shadow-sm hover:bg-slate-50 active:scale-95 transition-all">
+                    <Icon name="fa-solid fa-right-from-bracket" size={18} className="text-slate-500"/> Sign Out
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-8 pb-12 pt-2">
+                <CVManager cvData={cvData} setCvData={createAutoSaveSetter('cvData', setCvData)}/>
+                <ProfileManager profile={profile} setProfile={createAutoSaveSetter('profile', setProfile)}/>
+                <SocialManager footerData={footerData} setFooterData={createAutoSaveSetter('footerData', setFooterData)}/>
+                <ListManager title="Research Interests" items={researchInterests} setItems={createAutoSaveSetter('researchInterests', setResearchInterests)} fields={[
+                  {key:'icon',        label:'FontAwesome Icon Code', type:'text',     placeholder:'e.g. fa-solid fa-flask'},
+                  {key:'title',       label:'Interest Title',        type:'text'},
+                  {key:'description', label:'Description',           type:'textarea'}
+                ]}/>
+                <ListManager title="Home Page Image Slider" items={homeSlider} setItems={createAutoSaveSetter('homeSlider', setHomeSlider)} fields={[
+                  {key:'image',   label:'Slider Image',   type:'image'},
+                  {key:'caption', label:'Image Caption',  type:'text'}
+                ]}/>
+                <ListManager title="Projects" items={projects} setItems={createAutoSaveSetter('projects', setProjects)} fields={[
+                  {key:'image',       label:'Project Screenshot', type:'image'},
+                  {key:'title',       label:'Project Name',       type:'text'},
+                  {key:'tools',       label:'Tools',              type:'text'},
+                  {key:'description', label:'Description',        type:'textarea'}
+                ]}/>
+                <ListManager title="Publications" items={publications} setItems={createAutoSaveSetter('publications', setPublications)} fields={[
+                  {key:'title',       label:'Publication Title', type:'text'},
+                  {key:'journal',     label:'Journal',          type:'text'},
+                  {key:'year',        label:'Year',             type:'text'},
+                  {key:'description', label:'Abstract',         type:'textarea'}
+                ]}/>
+                <ListManager title="Blog Posts" items={blog} setItems={createAutoSaveSetter('blog', setBlog)} fields={[
+                  {key:'image',       label:'Cover Image', type:'image'},
+                  {key:'title',       label:'Title',       type:'text'},
+                  {key:'date',        label:'Date',        type:'text'},
+                  {key:'description', label:'Excerpt',     type:'textarea'}
+                ]}/>
+                <ListManager title="Education" items={education} setItems={createAutoSaveSetter('education', setEducation)} fields={[
+                  {key:'degree',      label:'Degree Name',       type:'text'},
+                  {key:'institution', label:'Institution Name',  type:'text'},
+                  {key:'year',        label:'Year',              type:'text'},
+                  {key:'details',     label:'Details',           type:'textarea'}
+                ]}/>
+                <ListManager title="Experience" items={experience} setItems={createAutoSaveSetter('experience', setExperience)} fields={[
+                  {key:'role',        label:'Role',        type:'text'},
+                  {key:'company',     label:'Company',     type:'text'},
+                  {key:'duration',    label:'Duration',    type:'text'},
+                  {key:'description', label:'Description', type:'textarea'}
+                ]}/>
+                <ListManager title="Achievements" items={achievements} setItems={createAutoSaveSetter('achievements', setAchievements)} fields={[
+                  {key:'image',       label:'Image',       type:'image'},
+                  {key:'title',       label:'Title',       type:'text'},
+                  {key:'date',        label:'Date',        type:'text'},
+                  {key:'description', label:'Description', type:'textarea'}
+                ]}/>
+              </div>
+            </div>
+          )}
+        </main>
+
+        {activeTab !== 'admin' && <Footer/>}
+
+        {/* Float Sync Status Toast Notification */}
+        {syncStatus.message && (
+          <div className={`fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-5 py-4 rounded-2xl shadow-2xl border backdrop-blur-md transition-all duration-500 bg-white/90 ${
+            syncStatus.type === 'syncing' ? 'border-blue-200 text-blue-800' :
+            syncStatus.type === 'success' ? 'border-emerald-200 text-emerald-800' :
+            'border-rose-200 text-rose-800'
+          }`}>
+            {syncStatus.type === 'syncing' && <Icon name="fa-solid fa-spinner fa-spin" size={18} className="text-blue-500"/>}
+            {syncStatus.type === 'success' && <Icon name="fa-solid fa-circle-check" size={18} className="text-emerald-500"/>}
+            {syncStatus.type === 'error' && <Icon name="fa-solid fa-circle-exclamation" size={18} className="text-rose-500"/>}
+            <span className="text-sm font-semibold">{syncStatus.message}</span>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
