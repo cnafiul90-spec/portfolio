@@ -32,7 +32,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.18.6/babel.min.js"></script>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
     <style>
         body { 
@@ -190,12 +195,7 @@
           animation: pulseSlow 5s ease-in-out infinite;
         }
     </style>
-
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-      import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-      import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
+    <script>
       const firebaseConfig = {
         apiKey: "AIzaSyDLSnqMPPnDH4gfqHKXpmD6nNh7uIUe4Rc",
         authDomain: "portfolio-6745e.firebaseapp.com",
@@ -207,18 +207,21 @@
         measurementId: "G-2FNNBW2TZP"
       };
 
-      const app  = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
+      // Initialize Firebase using compat API
+      firebase.initializeApp(firebaseConfig);
 
-      window.db                     = getDatabase(app);
-      window.firebaseSet            = set;
-      window.firebaseRef            = ref;
-      window.firebaseGet            = get;
+      const db = firebase.database();
+      const auth = firebase.auth();
+
+      window.db                     = db;
+      window.firebaseSet            = (refInstance, val) => refInstance.set(val);
+      window.firebaseRef            = (dbInstance, path) => dbInstance.ref(path);
+      window.firebaseGet            = (refInstance) => refInstance.get();
       window.firebaseAuth           = auth;
-      window.firebaseSignIn         = signInWithEmailAndPassword;
-      window.firebaseSendReset      = sendPasswordResetEmail;
-      window.firebaseOnAuthStateChanged = onAuthStateChanged;
-      window.firebaseSignOut        = signOut;
+      window.firebaseSignIn         = (authInstance, email, pass) => authInstance.signInWithEmailAndPassword(email, pass);
+      window.firebaseSendReset      = (authInstance, email) => authInstance.sendPasswordResetEmail(email);
+      window.firebaseOnAuthStateChanged = (authInstance, cb) => authInstance.onAuthStateChanged(cb);
+      window.firebaseSignOut        = (authInstance) => authInstance.signOut();
     </script>
 
     <script id="portfolio-data" type="application/json">
