@@ -15,7 +15,7 @@
     <meta property="og:title"       content="Md. Nafiul Chowdhury — Researcher | Biosensors & PoC Diagnostics">
     <meta property="og:description" content="Undergraduate Researcher at CUET specialising in nano-enabled biosensors, electrochemical transduction, and point-of-care diagnostics.">
     <meta property="og:image"       content="https://images.unsplash.com/photo-1507676184212-d0c30a519027?auto=format&fit=crop&q=80&w=1200&h=630">
-    <meta property="og:url"         content="https://cnafiul90-spec.github.io/portfolio_Md_Nafiul_Chowdhury/">
+    <meta property="og:url"         content="https://cnafiul90-spec.github.io/portfolio/">
     <meta property="og:site_name"   content="Md. Nafiul Chowdhury Portfolio">
 
     <!-- Twitter Card -->
@@ -320,6 +320,7 @@
   const cleanDataForFirebase = (val) => {
     if (val === undefined || val === null) return null;
     if (Array.isArray(val)) {
+      if (val.length === 0) return "empty";
       return val.map(cleanDataForFirebase).filter(item => item !== undefined && item !== null);
     }
     if (typeof val === 'object') {
@@ -539,8 +540,10 @@
         if (bio)    { setMeta('meta[property="og:description"]', bio.slice(0, 200));
                       setMeta('meta[name="twitter:description"]', bio.slice(0, 200));
                       setMeta('meta[name="description"]', bio.slice(0, 200)); }
-        if (avatar) { setMeta('meta[property="og:image"]',   avatar);
-                      setMeta('meta[name="twitter:image"]',  avatar); }
+        if (avatar && !avatar.startsWith('data:')) {
+          setMeta('meta[property="og:image"]',   avatar);
+          setMeta('meta[name="twitter:image"]',  avatar);
+        }
 
         setSaveStatus('saved');
         setTimeout(() => setSaveStatus(''), 2500);
@@ -606,7 +609,7 @@
                         <span>Image Zoom</span>
                         <span>{avatarZoom}%</span>
                       </div>
-                      <input type="range" min="0" max="250" step="5" value={avatarZoom}
+                      <input type="range" min="10" max="250" step="5" value={avatarZoom}
                         onChange={e => setAvatarZoom(parseInt(e.target.value))}
                         className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2042A4]" />
                     </div>
@@ -1390,7 +1393,7 @@
             const d = snap.val();
             if (d) {
               const toArray = (val) => {
-                if (!val) return [];
+                if (!val || val === "empty") return [];
                 if (Array.isArray(val)) return val.filter(Boolean);
                 if (typeof val === 'object') return Object.values(val).filter(Boolean);
                 return [];
@@ -1417,8 +1420,10 @@
               if (d.profile?.bio)    { setMeta('meta[property="og:description"]', d.profile.bio.slice(0, 200));
                                        setMeta('meta[name="twitter:description"]', d.profile.bio.slice(0, 200));
                                        setMeta('meta[name="description"]', d.profile.bio.slice(0, 200)); }
-              if (d.profile?.avatar) { setMeta('meta[property="og:image"]',  d.profile.avatar);
-                                       setMeta('meta[name="twitter:image"]', d.profile.avatar); }
+              if (d.profile?.avatar && !d.profile.avatar.startsWith('data:')) {
+                setMeta('meta[property="og:image"]',  d.profile.avatar);
+                setMeta('meta[name="twitter:image"]', d.profile.avatar);
+              }
             }
           }
         } catch (err) { console.warn("Firebase load error:", err); }
