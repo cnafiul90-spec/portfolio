@@ -480,32 +480,7 @@
         { "id": 3, "category": "Sensor Technologies", "items": "Electrochemical Biosensors, OECT, EGOFET, Nanomaterial Functionalization, PoC Diagnostics" },
         { "id": 4, "category": "Analytical & Software Tools", "items": "OriginPro, ChemDraw, ImageJ, SPSS, Excel, Git, GitHub, HTML/CSS/JS" }
       ],
-      "gallery": [
-        {
-          "id": 1,
-          "title": "IEEE Conference Presentation",
-          "category": "Conferences",
-          "date": "Oct 2024",
-          "caption": "Presenting research on perovskite tandem solar cell numerical modeling at IEEE Day.",
-          "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=800"
-        },
-        {
-          "id": 2,
-          "title": "STARLAB Team Research",
-          "category": "Lab & Research",
-          "date": "Aug 2024",
-          "caption": "Working on electrochemical biosensors fabrication in the cleanroom laboratory.",
-          "image": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800"
-        },
-        {
-          "id": 3,
-          "title": "HULT Prize Innovation Final",
-          "category": "Awards & Competitions",
-          "date": "Mar 2024",
-          "caption": "Receiving recognition for social enterprise innovation pitch.",
-          "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800"
-        }
-      ],
+      "gallery": [],
       "projects": [
         {
           "id": 1,
@@ -1596,9 +1571,12 @@
         </div>
 
         {filteredPhotos.length === 0 && (
-          <div className="text-center py-16 bg-white rounded-2xl border border-slate-200">
-            <Icon name="fa-solid fa-images" size={48} className="text-slate-300 mb-3 mx-auto"/>
-            <p className="text-slate-500 font-medium">No photos in this category yet.</p>
+          <div className="text-center py-20 bg-white rounded-2xl border border-slate-200 shadow-sm">
+            <div className="w-20 h-20 bg-blue-50 text-[#2042A4] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="fa-solid fa-images" size={36}/>
+            </div>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">No Photos Added Yet</h3>
+            <p className="text-slate-500 text-sm max-w-md mx-auto">Your photo gallery is currently empty. Visit the Admin Panel (<code className="bg-slate-100 px-2 py-1 rounded text-blue-700 font-mono text-xs">?admin</code>) to upload your research & success photos!</p>
           </div>
         )}
 
