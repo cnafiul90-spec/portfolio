@@ -2043,23 +2043,10 @@
      APP ROOT
   ═══════════════════════════════════════════════════════════════ */
   const App = () => {
-    // Automatic Cache Flush for legacy/stale entries (safe buffer)
-    try {
-      const CACHE_VER = 'v5_safe_clean';
-      if (localStorage.getItem('portfolio_cache_version') !== CACHE_VER) {
-        const toRemove = [];
-        for (let i = 0; i < localStorage.length; i++) {
-          const k = localStorage.key(i);
-          if (k && (k.startsWith('portfolio_cache_') || k.startsWith('portfolio_cached_'))) {
-            toRemove.push(k);
-          }
-        }
-        toRemove.forEach(k => {
-          try { localStorage.removeItem(k); } catch(e){}
-        });
-        localStorage.setItem('portfolio_cache_version', CACHE_VER);
-      }
-    } catch(e) {}
+    const [appData] = useState(() => {
+      try { return JSON.parse(document.getElementById('portfolio-data').textContent); }
+      catch { return {}; }
+    });
 
     const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'light');
 
@@ -2073,13 +2060,11 @@
     }, [theme]);
 
     const [activeTab, setActiveTabRaw] = useState(() => {
-      // Check URL for ?admin on first load
       return window.location.search.includes('admin') ? 'admin' : 'home';
     });
     const setActiveTab = (tab) => {
       setActiveTabRaw(tab);
       window.scrollTo({ top: 0, behavior: 'instant' });
-      // Update URL — add ?admin when entering admin, remove when leaving
       if (tab === 'admin') {
         window.history.replaceState(null, '', '?admin');
       } else {
@@ -2091,52 +2076,32 @@
     const [isDataLoaded,        setIsDataLoaded]        = useState(true);
     const [isAdminAuthenticated,setIsAdminAuthenticated]= useState(false);
 
-    const [appData] = useState(() => {
-      try { return JSON.parse(document.getElementById('portfolio-data').textContent); }
-      catch { return {}; }
-    });
-
-    const getInitial = (key, fallback, isArray = false) => {
-      try {
-        const cached = localStorage.getItem(`portfolio_cache_${key}`);
-        if (cached && cached !== "undefined" && cached !== "null") {
-          const parsed = JSON.parse(cached);
-          if (parsed !== null && parsed !== undefined) {
-            if (isArray) return Array.isArray(parsed) ? parsed : [];
-            return parsed;
-          }
-        }
-      } catch (e) {}
-      if (fallback !== undefined && fallback !== null) {
-        if (isArray) return Array.isArray(fallback) ? fallback : [];
-        return fallback;
-      }
-      return isArray ? [] : {};
-    };
-
     /* ── state ── */
-    const [profile, setProfileState] = useState(() => getInitial('profile', appData.profile || {}, false));
-    const setProfile = (newProf) => {
-      const val = newProf || {};
-      setProfileState(val);
-      try { localStorage.setItem('portfolio_cache_profile', JSON.stringify(val)); } catch(e){}
-    };
+    const [profile,           setProfile]           = useState(appData.profile           || {});
+    const [footerData,        setFooterData]        = useState(appData.footerData        || {});
+    const [homeSlider,       setHomeSlider]       = useState(appData.homeSlider        || []);
+    const [noticeBoard,      setNoticeBoard]      = useState(appData.noticeBoard       || []);
+    const [gallery,          setGallery]          = useState(appData.gallery           || []);
+    const [skills,           setSkills]           = useState(appData.skills            || []);
+    const [researchInterests,setResearchInterests]= useState(appData.researchInterests || []);
+    const [cvData,           setCvData]           = useState(appData.cvData            || {});
+    const [education,        setEducation]        = useState(appData.education         || []);
+    const [projects,         setProjects]         = useState(appData.projects          || []);
+    const [achievements,     setAchievements]     = useState(appData.achievements      || []);
+    const [publications,     setPublications]     = useState(appData.publications      || []);
+    const [experience,       setExperience]       = useState(appData.experience        || []);
+    const [blog,             setBlog]             = useState(appData.blog              || []);
+    useEffect(() => {
+      try {
+        const keys = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith('portfolio_cache')) keys.push(k);
+        }
+        keys.forEach(k => localStorage.removeItem(k));
+      } catch (e) {}
+    }, []);
 
-    const [footerData,        setFooterData]        = useState(() => getInitial('footerData',        appData.footerData        || {}, false));
-    const [homeSlider,       setHomeSlider]       = useState(() => getInitial('homeSlider',       appData.homeSlider        || [], true));
-    const [noticeBoard,      setNoticeBoard]      = useState(() => getInitial('noticeBoard',      appData.noticeBoard       || [], true));
-    const [gallery,          setGallery]          = useState(() => getInitial('gallery',          appData.gallery           || [], true));
-    const [skills,           setSkills]           = useState(() => getInitial('skills',           appData.skills            || [], true));
-    const [researchInterests,setResearchInterests]= useState(() => getInitial('researchInterests',appData.researchInterests || [], true));
-    const [cvData,           setCvData]           = useState(() => getInitial('cvData',           appData.cvData            || {}, false));
-    const [education,        setEducation]        = useState(() => getInitial('education',        appData.education         || [], true));
-    const [projects,         setProjects]         = useState(() => getInitial('projects',          appData.projects          || [], true));
-    const [achievements,     setAchievements]     = useState(() => getInitial('achievements',     appData.achievements      || [], true));
-    const [publications,     setPublications]     = useState(() => getInitial('publications',     appData.publications      || [], true));
-    const [experience,       setExperience]       = useState(() => getInitial('experience',       appData.experience        || [], true));
-    const [blog,             setBlog]             = useState(() => getInitial('blog',             appData.blog              || [], true));
-
- 
     const [syncStatus, setSyncStatus] = useState({ type: '', message: '' });
 
     const showSyncNotification = (type, message) => {
@@ -2156,7 +2121,6 @@
     const createAutoSaveSetter = (stateKey, localSetter) => {
       return (newValue) => {
         localSetter(newValue);
-        try { localStorage.setItem(`portfolio_cache_${stateKey}`, JSON.stringify(newValue)); } catch(e){}
         if (window.db && window.firebaseSet && window.firebaseRef) {
           try {
             const cleaned = cleanDataForFirebase(newValue);
@@ -2221,28 +2185,20 @@
                 return [];
               };
 
-              const updateKey = (key, val, setter) => {
-                if (val !== undefined) {
-                  const parsed = (typeof val === 'object' || Array.isArray(val)) ? toArray(val) : val;
-                  setter(parsed);
-                  try { localStorage.setItem(`portfolio_cache_${key}`, JSON.stringify(parsed)); } catch(e){}
-                }
-              };
-
-              if (d.profile !== undefined)           updateKey('profile',           d.profile,           setProfileState);
-              if (d.footerData !== undefined)        updateKey('footerData',        d.footerData,        setFooterData);
-              if (d.homeSlider !== undefined)        updateKey('homeSlider',        d.homeSlider,        setHomeSlider);
-              if (d.noticeBoard !== undefined)       updateKey('noticeBoard',       d.noticeBoard,       setNoticeBoard);
-              if (d.gallery !== undefined)           updateKey('gallery',           d.gallery,           setGallery);
-              if (d.skills !== undefined)            updateKey('skills',            d.skills,            setSkills);
-              if (d.researchInterests !== undefined) updateKey('researchInterests', d.researchInterests, setResearchInterests);
-              if (d.cvData !== undefined)            updateKey('cvData',            d.cvData,            setCvData);
-              if (d.education !== undefined)         updateKey('education',         d.education,         setEducation);
-              if (d.projects !== undefined)          updateKey('projects',          d.projects,          setProjects);
-              if (d.achievements !== undefined)      updateKey('achievements',      d.achievements,      setAchievements);
-              if (d.publications !== undefined)      updateKey('publications',      d.publications,      setPublications);
-              if (d.experience !== undefined)        updateKey('experience',        d.experience,        setExperience);
-              if (d.blog !== undefined)              updateKey('blog',              d.blog,              setBlog);
+              setProfile(d.profile || {});
+              setHomeSlider(d.homeSlider !== undefined ? toArray(d.homeSlider) : appData.homeSlider || []);
+              setNoticeBoard(d.noticeBoard !== undefined ? toArray(d.noticeBoard) : appData.noticeBoard || []);
+              setGallery(d.gallery !== undefined ? toArray(d.gallery) : appData.gallery || []);
+              setSkills(d.skills !== undefined ? toArray(d.skills) : appData.skills || []);
+              setResearchInterests(d.researchInterests !== undefined ? toArray(d.researchInterests) : appData.researchInterests || []);
+              setCvData(d.cvData || {});
+              setEducation(d.education !== undefined ? toArray(d.education) : appData.education || []);
+              setProjects(d.projects !== undefined ? toArray(d.projects) : appData.projects || []);
+              setAchievements(d.achievements !== undefined ? toArray(d.achievements) : appData.achievements || []);
+              setPublications(d.publications !== undefined ? toArray(d.publications) : appData.publications || []);
+              setExperience(d.experience !== undefined ? toArray(d.experience) : appData.experience || []);
+              setBlog(d.blog !== undefined ? toArray(d.blog) : appData.blog || []);
+              setFooterData(d.footerData || {});
 
               // ── Auto-update OG tags from Firebase profile ──
               const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute('content', val); };
