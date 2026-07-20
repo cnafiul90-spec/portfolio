@@ -1722,28 +1722,37 @@
     const [message, setMessage] = useState('');
     const [status, setStatus] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       if (!name || !email || !message) return;
       setStatus('sending');
+
+      const payload = {
+        name: name.trim(),
+        email: email.trim(),
+        subject: subject.trim() || 'General Inquiry',
+        message: message.trim(),
+        timestamp: new Date().toISOString(),
+        read: false
+      };
+
       try {
         if (window.db && window.firebaseRef) {
-          const msgRef = window.firebaseRef(window.db, 'messages').push();
-          msgRef.set({
-            name, email, subject, message,
-            timestamp: new Date().toISOString(),
-            read: false
-          }).then(() => {
-            setStatus('sent');
-            setName(''); setEmail(''); setSubject(''); setMessage('');
-          }).catch(err => {
-            console.error(err);
-            setStatus('error');
-          });
-        } else {
+          const msgRef = window.firebaseRef(window.db, 'messages');
+          if (window.firebasePush) {
+            await window.firebasePush(msgRef, payload);
+          } else {
+            await msgRef.push(payload);
+          }
           setStatus('sent');
+          setName(''); setEmail(''); setSubject(''); setMessage('');
+        } else {
+          window.location.href = `mailto:${profile.email||'cnafiul90@gmail.com'}?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(`From: ${payload.name} (${payload.email})\n\n${payload.message}`)}`;
+          setStatus('sent');
+          setName(''); setEmail(''); setSubject(''); setMessage('');
         }
       } catch (err) {
+        console.error("Firebase message send error:", err);
         setStatus('error');
       }
     };
@@ -1821,7 +1830,17 @@
                   className="w-full py-3.5 bg-[#2042A4] text-white font-bold rounded-xl hover:bg-blue-800 transition-all flex items-center justify-center gap-2 shadow-md">
                   {status==='sending' ? <><Icon name="fa-solid fa-spinner fa-spin" size={18}/> Sending...</> : <><Icon name="fa-solid fa-paper-plane" size={18}/> Send Message</>}
                 </button>
-                {status==='error' && <p className="text-red-500 text-xs font-semibold text-center mt-2">Failed to send message. Please try again.</p>}
+                {status==='error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center space-y-3 mt-3">
+                    <p className="text-red-700 text-xs font-semibold">
+                      Database connection issue. Send your message directly via email:
+                    </p>
+                    <a href={`mailto:${profile.email||'cnafiul90@gmail.com'}?subject=${encodeURIComponent(subject||'Inquiry from Portfolio')}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`}
+                      className="inline-flex items-center justify-center gap-2 bg-[#2042A4] text-white px-5 py-2.5 rounded-lg font-bold text-xs hover:bg-blue-800 transition-colors shadow-sm">
+                      <Icon name="fa-solid fa-paper-plane" size={14}/> Send via Direct Email
+                    </a>
+                  </div>
+                )}
               </form>
             )}
           </div>
