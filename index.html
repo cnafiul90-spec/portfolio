@@ -1170,42 +1170,23 @@
   };
 
   const AvatarImage = ({ profile }) => {
-    const [loaded, setLoaded] = useState(() => Boolean(profile.avatar));
-
-    useEffect(() => {
-      if (profile.avatar) {
-        // Preload image in memory for instant paint
-        const img = new Image();
-        img.src = profile.avatar;
-        if (img.complete) {
-          setLoaded(true);
-        }
-      }
-    }, [profile.avatar]);
-
+    const avatar = profile?.avatar;
+    if (!avatar) {
+      return (
+        <div className="w-full h-full flex items-center justify-center bg-blue-50">
+          <Icon name="fa-solid fa-user" size={80} className="text-blue-200" />
+        </div>
+      );
+    }
     return (
-      <div className="relative w-full h-full flex items-center justify-center bg-slate-100 overflow-hidden">
-        {(!loaded && profile.avatar) && (
-          <div className="absolute inset-0 bg-gradient-to-tr from-slate-100 via-blue-50 to-slate-200 animate-pulse flex items-center justify-center">
-            <Icon name="fa-solid fa-user" size={70} className="text-slate-300/60" />
-          </div>
-        )}
-        {profile.avatar ? (
-          <img src={profile.avatar} alt={profile.name||'Profile'}
-            onLoad={() => setLoaded(true)}
-            className={`w-full h-full object-contain bg-white select-none pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-90'}`}
-            style={{
-              transform: `translate(${Number(profile.avatarX || 0)}%, ${Number(profile.avatarY || 0)}%) scale(${Number(profile.avatarZoom || 100) / 100})`,
-              transformOrigin: 'center'
-            }}
-            onError={e => { setLoaded(true); e.target.style.display = 'none'; }}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-blue-50">
-            <Icon name="fa-solid fa-user" size={80} className="text-blue-200" />
-          </div>
-        )}
-      </div>
+      <img src={avatar} alt={profile?.name || 'Profile'}
+        className="w-full h-full object-contain bg-white select-none pointer-events-none"
+        style={{
+          transform: `translate(${Number(profile?.avatarX || 0)}%, ${Number(profile?.avatarY || 0)}%) scale(${Number(profile?.avatarZoom || 100) / 100})`,
+          transformOrigin: 'center'
+        }}
+        onError={e => { e.target.style.display = 'none'; }}
+      />
     );
   };
 
@@ -2062,6 +2043,24 @@
      APP ROOT
   ═══════════════════════════════════════════════════════════════ */
   const App = () => {
+    // Automatic Cache Flush for legacy/stale entries (safe buffer)
+    try {
+      const CACHE_VER = 'v5_safe_clean';
+      if (localStorage.getItem('portfolio_cache_version') !== CACHE_VER) {
+        const toRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && (k.startsWith('portfolio_cache_') || k.startsWith('portfolio_cached_'))) {
+            toRemove.push(k);
+          }
+        }
+        toRemove.forEach(k => {
+          try { localStorage.removeItem(k); } catch(e){}
+        });
+        localStorage.setItem('portfolio_cache_version', CACHE_VER);
+      }
+    } catch(e) {}
+
     const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'light');
 
     useEffect(() => {
@@ -2519,7 +2518,39 @@
     );
   };
 
-  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  class ErrorBoundary extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { hasError: false };
+    }
+    static getDerivedStateFromError() {
+      return { hasError: true };
+    }
+    componentDidCatch(error, errorInfo) {
+      console.error("ErrorBoundary caught error:", error, errorInfo);
+    }
+    render() {
+      if (this.state.hasError) {
+        return (
+          <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-slate-50 text-center">
+            <h2 className="text-2xl font-bold text-[#2042A4] mb-2">Md. Nafiul Chowdhury — Portfolio</h2>
+            <p className="text-slate-600 mb-4 text-sm font-medium">Application view refreshed. Click below to reload.</p>
+            <button onClick={() => { try{localStorage.clear();}catch(e){} window.location.reload(); }}
+              className="px-6 py-2.5 bg-[#2042A4] text-white font-bold rounded-xl text-sm shadow-md hover:bg-blue-800 transition-colors">
+              Reload Site
+            </button>
+          </div>
+        );
+      }
+      return this.props.children;
+    }
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <ErrorBoundary>
+      <App/>
+    </ErrorBoundary>
+  );
 </script>
 </body>
 </html>
