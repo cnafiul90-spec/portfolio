@@ -1212,20 +1212,24 @@
   /* ═══════════════════════════════════════════════════════════════
      PUBLIC VIEWS
   ═══════════════════════════════════════════════════════════════ */
-  const HomeView = ({ profile, setActiveTab, homeSlider, researchInterests, noticeBoard }) => {
+  const HomeView = ({ profile = {}, setActiveTab, homeSlider = [], researchInterests = [], noticeBoard = [] }) => {
+    const sliderList = Array.isArray(homeSlider) ? homeSlider : [];
+    const interestsList = Array.isArray(researchInterests) ? researchInterests : [];
+    const noticeList = Array.isArray(noticeBoard) ? noticeBoard : [];
+
     const [slide, setSlide] = useState(0);
 
     useEffect(() => {
-      if (!homeSlider.length) return;
-      const t = setInterval(() => setSlide(p => (p+1) % homeSlider.length), 5000);
+      if (!sliderList.length) return;
+      const t = setInterval(() => setSlide(p => (p+1) % sliderList.length), 5000);
       return () => clearInterval(t);
-    }, [homeSlider.length]);
+    }, [sliderList.length]);
 
     useEffect(() => {
-      if (slide >= homeSlider.length) {
+      if (slide >= sliderList.length) {
         setSlide(0);
       }
-    }, [homeSlider.length, slide]);
+    }, [sliderList.length, slide]);
 
     return (
       <div className="max-w-6xl mx-auto">
@@ -2093,34 +2097,45 @@
       catch { return {}; }
     });
 
-    const getInitial = (key, fallback) => {
+    const getInitial = (key, fallback, isArray = false) => {
       try {
         const cached = localStorage.getItem(`portfolio_cache_${key}`);
-        if (cached !== null) return JSON.parse(cached);
+        if (cached && cached !== "undefined" && cached !== "null") {
+          const parsed = JSON.parse(cached);
+          if (parsed !== null && parsed !== undefined) {
+            if (isArray) return Array.isArray(parsed) ? parsed : [];
+            return parsed;
+          }
+        }
       } catch (e) {}
-      return fallback;
+      if (fallback !== undefined && fallback !== null) {
+        if (isArray) return Array.isArray(fallback) ? fallback : [];
+        return fallback;
+      }
+      return isArray ? [] : {};
     };
 
     /* ── state ── */
-    const [profile, setProfileState] = useState(() => getInitial('profile', appData.profile || {}));
+    const [profile, setProfileState] = useState(() => getInitial('profile', appData.profile || {}, false));
     const setProfile = (newProf) => {
-      setProfileState(newProf);
-      try { localStorage.setItem('portfolio_cache_profile', JSON.stringify(newProf)); } catch(e){}
+      const val = newProf || {};
+      setProfileState(val);
+      try { localStorage.setItem('portfolio_cache_profile', JSON.stringify(val)); } catch(e){}
     };
 
-    const [footerData,        setFooterData]        = useState(() => getInitial('footerData',        appData.footerData        || {}));
-    const [homeSlider,       setHomeSlider]       = useState(() => getInitial('homeSlider',       appData.homeSlider        || []));
-    const [noticeBoard,      setNoticeBoard]      = useState(() => getInitial('noticeBoard',      appData.noticeBoard       || []));
-    const [gallery,          setGallery]          = useState(() => getInitial('gallery',          appData.gallery           || []));
-    const [skills,           setSkills]           = useState(() => getInitial('skills',           appData.skills            || []));
-    const [researchInterests,setResearchInterests]= useState(() => getInitial('researchInterests',appData.researchInterests || []));
-    const [cvData,           setCvData]           = useState(() => getInitial('cvData',           appData.cvData            || {}));
-    const [education,        setEducation]        = useState(() => getInitial('education',        appData.education         || []));
-    const [projects,         setProjects]         = useState(() => getInitial('projects',          appData.projects          || []));
-    const [achievements,     setAchievements]     = useState(() => getInitial('achievements',     appData.achievements      || []));
-    const [publications,     setPublications]     = useState(() => getInitial('publications',     appData.publications      || []));
-    const [experience,       setExperience]       = useState(() => getInitial('experience',       appData.experience        || []));
-    const [blog,             setBlog]             = useState(() => getInitial('blog',             appData.blog              || []));
+    const [footerData,        setFooterData]        = useState(() => getInitial('footerData',        appData.footerData        || {}, false));
+    const [homeSlider,       setHomeSlider]       = useState(() => getInitial('homeSlider',       appData.homeSlider        || [], true));
+    const [noticeBoard,      setNoticeBoard]      = useState(() => getInitial('noticeBoard',      appData.noticeBoard       || [], true));
+    const [gallery,          setGallery]          = useState(() => getInitial('gallery',          appData.gallery           || [], true));
+    const [skills,           setSkills]           = useState(() => getInitial('skills',           appData.skills            || [], true));
+    const [researchInterests,setResearchInterests]= useState(() => getInitial('researchInterests',appData.researchInterests || [], true));
+    const [cvData,           setCvData]           = useState(() => getInitial('cvData',           appData.cvData            || {}, false));
+    const [education,        setEducation]        = useState(() => getInitial('education',        appData.education         || [], true));
+    const [projects,         setProjects]         = useState(() => getInitial('projects',          appData.projects          || [], true));
+    const [achievements,     setAchievements]     = useState(() => getInitial('achievements',     appData.achievements      || [], true));
+    const [publications,     setPublications]     = useState(() => getInitial('publications',     appData.publications      || [], true));
+    const [experience,       setExperience]       = useState(() => getInitial('experience',       appData.experience        || [], true));
+    const [blog,             setBlog]             = useState(() => getInitial('blog',             appData.blog              || [], true));
 
  
     const [syncStatus, setSyncStatus] = useState({ type: '', message: '' });
