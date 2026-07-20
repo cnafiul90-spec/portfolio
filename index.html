@@ -1170,15 +1170,22 @@
   };
 
   const AvatarImage = ({ profile }) => {
-    const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState(() => Boolean(profile.avatar));
 
     useEffect(() => {
-      setLoaded(false);
+      if (profile.avatar) {
+        // Preload image in memory for instant paint
+        const img = new Image();
+        img.src = profile.avatar;
+        if (img.complete) {
+          setLoaded(true);
+        }
+      }
     }, [profile.avatar]);
 
     return (
       <div className="relative w-full h-full flex items-center justify-center bg-slate-100 overflow-hidden">
-        {!loaded && (
+        {(!loaded && profile.avatar) && (
           <div className="absolute inset-0 bg-gradient-to-tr from-slate-100 via-blue-50 to-slate-200 animate-pulse flex items-center justify-center">
             <Icon name="fa-solid fa-user" size={70} className="text-slate-300/60" />
           </div>
@@ -1186,7 +1193,7 @@
         {profile.avatar ? (
           <img src={profile.avatar} alt={profile.name||'Profile'}
             onLoad={() => setLoaded(true)}
-            className={`w-full h-full object-contain bg-white select-none pointer-events-none transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`w-full h-full object-contain bg-white select-none pointer-events-none transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-90'}`}
             style={{
               transform: `translate(${Number(profile.avatarX || 0)}%, ${Number(profile.avatarY || 0)}%) scale(${Number(profile.avatarZoom || 100) / 100})`,
               transformOrigin: 'center'
