@@ -1158,7 +1158,7 @@
   /* ═══════════════════════════════════════════════════════════════
      PUBLIC VIEWS
   ═══════════════════════════════════════════════════════════════ */
-  const HomeView = ({ profile = {}, setActiveTab, homeSlider = [], researchInterests = [], noticeBoard = [] }) => {
+  const HomeView = ({ profile = {}, setActiveTab, homeSlider = [], researchInterests = [], noticeBoard = [], isDataLoaded = true }) => {
     const sliderList = Array.isArray(homeSlider) ? homeSlider : [];
     const interestsList = Array.isArray(researchInterests) ? researchInterests : [];
     const noticeList = Array.isArray(noticeBoard) ? noticeBoard : [];
@@ -1203,10 +1203,21 @@
           </div>
         </div>
 
-        {/* Down Arrow Indicator */}
-        <div className="flex justify-center mt-8 mb-24 animate-bounce">
-          <Icon name="fa-solid fa-arrow-down" className="text-slate-950" size={20}/>
-        </div>
+        {/* High-Tech Cloud Syncing Indicator */}
+        {!isDataLoaded && (
+          <div className="mb-16 p-8 bg-white/80 backdrop-blur-md rounded-3xl border border-blue-100 shadow-sm animate-pulse flex flex-col items-center justify-center text-center space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-[#2042A4]">
+              <Icon name="fa-solid fa-atom fa-spin" size={28}/>
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-800 text-lg">Syncing Live Research Database...</h4>
+              <p className="text-xs text-slate-500 mt-1">Connecting to nano-biosensors & publications cloud data</p>
+            </div>
+            <div className="w-48 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+              <div className="w-full h-full bg-[#2042A4] rounded-full animate-pulse"/>
+            </div>
+          </div>
+        )}
 
         {/* research interests */}
         {researchInterests.length > 0 && (
@@ -2302,7 +2313,7 @@
         <main className="flex-1 w-full px-6 md:px-8 lg:px-12 xl:px-20 pt-28 pb-20">
           {activeTab !== 'admin' && (
             <div key={activeTab} className="page-enter">
-              {activeTab==='home'         && <HomeView profile={profile} setActiveTab={setActiveTab} homeSlider={homeSlider} researchInterests={researchInterests} noticeBoard={noticeBoard}/>}
+              {activeTab==='home'         && <HomeView profile={profile} setActiveTab={setActiveTab} homeSlider={homeSlider} researchInterests={researchInterests} noticeBoard={noticeBoard} isDataLoaded={isDataLoaded}/>}
               {activeTab==='education'    && <EducationView education={education}/>}
               {activeTab==='projects'     && <ProjectsView projects={projects} skills={skills}/>}
               {activeTab==='gallery'      && <GalleryView gallery={gallery}/>}
