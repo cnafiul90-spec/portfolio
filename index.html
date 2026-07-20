@@ -2093,32 +2093,34 @@
       catch { return {}; }
     });
 
-    /* ── state ── */
-    const [profile, setProfileState] = useState(() => {
+    const getInitial = (key, fallback) => {
       try {
-        const cached = localStorage.getItem('portfolio_cached_profile');
-        if (cached) return JSON.parse(cached);
+        const cached = localStorage.getItem(`portfolio_cache_${key}`);
+        if (cached !== null) return JSON.parse(cached);
       } catch (e) {}
-      return appData.profile || {};
-    });
+      return fallback;
+    };
 
+    /* ── state ── */
+    const [profile, setProfileState] = useState(() => getInitial('profile', appData.profile || {}));
     const setProfile = (newProf) => {
       setProfileState(newProf);
-      try { localStorage.setItem('portfolio_cached_profile', JSON.stringify(newProf)); } catch(e){}
+      try { localStorage.setItem('portfolio_cache_profile', JSON.stringify(newProf)); } catch(e){}
     };
-    const [footerData,        setFooterData]        = useState(appData.footerData        || {});
-    const [homeSlider,       setHomeSlider]       = useState(appData.homeSlider        || []);
-    const [noticeBoard,      setNoticeBoard]      = useState(appData.noticeBoard       || []);
-    const [gallery,          setGallery]          = useState(appData.gallery           || []);
-    const [skills,           setSkills]           = useState(appData.skills            || []);
-    const [researchInterests,setResearchInterests]= useState(appData.researchInterests || []);
-    const [cvData,           setCvData]           = useState(appData.cvData            || {});
-    const [education,        setEducation]        = useState(appData.education         || []);
-    const [projects,         setProjects]         = useState(appData.projects          || []);
-    const [achievements,     setAchievements]     = useState(appData.achievements      || []);
-    const [publications,     setPublications]     = useState(appData.publications      || []);
-    const [experience,       setExperience]       = useState(appData.experience        || []);
-    const [blog,             setBlog]             = useState(appData.blog              || []);
+
+    const [footerData,        setFooterData]        = useState(() => getInitial('footerData',        appData.footerData        || {}));
+    const [homeSlider,       setHomeSlider]       = useState(() => getInitial('homeSlider',       appData.homeSlider        || []));
+    const [noticeBoard,      setNoticeBoard]      = useState(() => getInitial('noticeBoard',      appData.noticeBoard       || []));
+    const [gallery,          setGallery]          = useState(() => getInitial('gallery',          appData.gallery           || []));
+    const [skills,           setSkills]           = useState(() => getInitial('skills',           appData.skills            || []));
+    const [researchInterests,setResearchInterests]= useState(() => getInitial('researchInterests',appData.researchInterests || []));
+    const [cvData,           setCvData]           = useState(() => getInitial('cvData',           appData.cvData            || {}));
+    const [education,        setEducation]        = useState(() => getInitial('education',        appData.education         || []));
+    const [projects,         setProjects]         = useState(() => getInitial('projects',          appData.projects          || []));
+    const [achievements,     setAchievements]     = useState(() => getInitial('achievements',     appData.achievements      || []));
+    const [publications,     setPublications]     = useState(() => getInitial('publications',     appData.publications      || []));
+    const [experience,       setExperience]       = useState(() => getInitial('experience',       appData.experience        || []));
+    const [blog,             setBlog]             = useState(() => getInitial('blog',             appData.blog              || []));
 
  
     const [syncStatus, setSyncStatus] = useState({ type: '', message: '' });
@@ -2140,6 +2142,7 @@
     const createAutoSaveSetter = (stateKey, localSetter) => {
       return (newValue) => {
         localSetter(newValue);
+        try { localStorage.setItem(`portfolio_cache_${stateKey}`, JSON.stringify(newValue)); } catch(e){}
         if (window.db && window.firebaseSet && window.firebaseRef) {
           try {
             const cleaned = cleanDataForFirebase(newValue);
@@ -2204,20 +2207,28 @@
                 return [];
               };
 
-              setProfile(d.profile || {});
-              setHomeSlider(d.homeSlider !== undefined ? toArray(d.homeSlider) : appData.homeSlider || []);
-              setNoticeBoard(d.noticeBoard !== undefined ? toArray(d.noticeBoard) : appData.noticeBoard || []);
-              setGallery(d.gallery !== undefined ? toArray(d.gallery) : appData.gallery || []);
-              setSkills(d.skills !== undefined ? toArray(d.skills) : appData.skills || []);
-              setResearchInterests(d.researchInterests !== undefined ? toArray(d.researchInterests) : appData.researchInterests || []);
-              setCvData(d.cvData || {});
-              setEducation(d.education !== undefined ? toArray(d.education) : appData.education || []);
-              setProjects(d.projects !== undefined ? toArray(d.projects) : appData.projects || []);
-              setAchievements(d.achievements !== undefined ? toArray(d.achievements) : appData.achievements || []);
-              setPublications(d.publications !== undefined ? toArray(d.publications) : appData.publications || []);
-              setExperience(d.experience !== undefined ? toArray(d.experience) : appData.experience || []);
-              setBlog(d.blog !== undefined ? toArray(d.blog) : appData.blog || []);
-              setFooterData(d.footerData || {});
+              const updateKey = (key, val, setter) => {
+                if (val !== undefined) {
+                  const parsed = (typeof val === 'object' || Array.isArray(val)) ? toArray(val) : val;
+                  setter(parsed);
+                  try { localStorage.setItem(`portfolio_cache_${key}`, JSON.stringify(parsed)); } catch(e){}
+                }
+              };
+
+              if (d.profile !== undefined)           updateKey('profile',           d.profile,           setProfileState);
+              if (d.footerData !== undefined)        updateKey('footerData',        d.footerData,        setFooterData);
+              if (d.homeSlider !== undefined)        updateKey('homeSlider',        d.homeSlider,        setHomeSlider);
+              if (d.noticeBoard !== undefined)       updateKey('noticeBoard',       d.noticeBoard,       setNoticeBoard);
+              if (d.gallery !== undefined)           updateKey('gallery',           d.gallery,           setGallery);
+              if (d.skills !== undefined)            updateKey('skills',            d.skills,            setSkills);
+              if (d.researchInterests !== undefined) updateKey('researchInterests', d.researchInterests, setResearchInterests);
+              if (d.cvData !== undefined)            updateKey('cvData',            d.cvData,            setCvData);
+              if (d.education !== undefined)         updateKey('education',         d.education,         setEducation);
+              if (d.projects !== undefined)          updateKey('projects',          d.projects,          setProjects);
+              if (d.achievements !== undefined)      updateKey('achievements',      d.achievements,      setAchievements);
+              if (d.publications !== undefined)      updateKey('publications',      d.publications,      setPublications);
+              if (d.experience !== undefined)        updateKey('experience',        d.experience,        setExperience);
+              if (d.blog !== undefined)              updateKey('blog',              d.blog,              setBlog);
 
               // ── Auto-update OG tags from Firebase profile ──
               const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute('content', val); };
