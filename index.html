@@ -2346,6 +2346,13 @@
                 <CVManager cvData={cvData} setCvData={createAutoSaveSetter('cvData', setCvData)}/>
                 <ProfileManager profile={profile} setProfile={createAutoSaveSetter('profile', setProfile)}/>
                 <SocialManager footerData={footerData} setFooterData={createAutoSaveSetter('footerData', setFooterData)}/>
+                <ListManager title="Gallery Showcase Photos" items={gallery} setItems={createAutoSaveSetter('gallery', setGallery)} fields={[
+                  {key:'image',    label:'Photo Image', type:'image'},
+                  {key:'title',    label:'Photo Title', type:'text'},
+                  {key:'category', label:'Category (e.g. Conferences, Lab & Research, Awards)', type:'text'},
+                  {key:'date',     label:'Date / Period', type:'text', placeholder:'e.g. Oct 2024'},
+                  {key:'caption',  label:'Photo Description / Caption', type:'textarea'}
+                ]}/>
                 <ListManager title="Academic Notice Board & Updates" items={noticeBoard} setItems={createAutoSaveSetter('noticeBoard', setNoticeBoard)} fields={[
                   {key:'date', label:'Date / Period', type:'text'},
                   {key:'text', label:'Notice / Milestone Text', type:'textarea'}
